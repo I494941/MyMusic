@@ -30,4 +30,23 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    api 'com.android.support:design:27.1.1'
+
+    /*Retrofit*/
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    /* rxjava*/
+    api 'io.reactivex.rxjava2:rxjava:2.1.7'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    /*Gson*/
+    api 'com.google.code.gson:gson:2.8.2'
+    /*butterknife*/
+    api 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    /*状态栏*/
+    api 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    /*glide*/
+    api 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
 }
