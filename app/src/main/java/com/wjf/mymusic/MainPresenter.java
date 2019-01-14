@@ -1,19 +1,20 @@
-package com.wjf.mymusic.ui.startActivity;
+package com.wjf.mymusic;
 
 import com.wjf.mymusic.http.HttpManager;
 import com.wjf.mymusic.util.HttpUtil;
+
 import io.reactivex.observers.DisposableObserver;
 
 /**
  * Created by ws on 2017/11/9 0009.
  */
 //@ActivityScoped
-public class StartPresenter implements StartContract.Presenter {
+public class MainPresenter implements MainContract.Presenter {
 
-    private StartContract.View mView;
-    private StartActivity mActivity;
+    private MainContract.View mView;
+    private MainActivity mActivity;
 
-    public StartPresenter(StartContract.View view, StartActivity activity) {
+    public MainPresenter(MainContract.View view, MainActivity activity) {
         mView = view;
         mActivity = activity;
     }
@@ -37,7 +38,7 @@ public class StartPresenter implements StartContract.Presenter {
 
                     @Override
                     public void onComplete() {
-                        mView.getBingPicComplete();
+
                     }
                 });
     }
