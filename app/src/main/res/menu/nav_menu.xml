@@ -4,18 +4,18 @@
         <item
             android:id="@+id/nav_theme"
             android:icon="@drawable/nav_theme"
-            android:title="主题中心" />
+            android:title="@string/theme" />
         <item
             android:id="@+id/nav_night_mode"
             android:icon="@drawable/nav_night"
-            android:title="夜间模式" />
+            android:title="@string/night_mode" />
         <item
             android:id="@+id/nav_about_me"
             android:icon="@drawable/nav_about"
-            android:title="关于" />
+            android:title="@string/about" />
         <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/nav_logout"
-            android:title="退出" />
+            android:id="@+id/nav_quit"
+            android:icon="@drawable/nav_quit"
+            android:title="@string/quit" />
     </group>
 </menu>

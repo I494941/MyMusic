@@ -1,12 +1,21 @@
 package com.wjf.mymusic.ui.startActivity;
 
-import android.view.animation.*;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
-import butterknife.BindView;
+
 import com.bumptech.glide.Glide;
 import com.wjf.mymusic.MainActivity;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseAppCompatActivity;
+import com.wjf.mymusic.constants.Constants;
+import com.wjf.mymusic.sp.SharePreferenceManager;
+
+import butterknife.BindView;
 
 /**
  * Created by wjf on 2019/1/11.
@@ -17,6 +26,7 @@ public class StartActivity extends BaseAppCompatActivity implements StartContrac
     ImageView mIvBing;
 
     private StartPresenter mPrensenter;
+    private SharePreferenceManager sp = new SharePreferenceManager(this);
 
     @Override
     protected int getContentViewLayoutID() {
@@ -31,6 +41,7 @@ public class StartActivity extends BaseAppCompatActivity implements StartContrac
 
     @Override
     public void getBingPicSucc(String str) {
+        sp.putString(Constants.BING_URL, str);
         Glide.with(StartActivity.this).load(str).into(mIvBing);
     }
 

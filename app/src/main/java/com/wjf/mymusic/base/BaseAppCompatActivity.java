@@ -26,24 +26,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.wjf.mymusic.R;
+import com.wjf.mymusic.constants.Constants;
+import com.wjf.mymusic.sp.SharePreferenceManager;
 import com.wjf.mymusic.util.ToastUtil;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public abstract class BaseAppCompatActivity extends AppCompatActivity {
 
     protected Context mContext = null;
     private Unbinder mUnbinder;
 
+    protected SharePreferenceManager sp = new SharePreferenceManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
         setTranslucentStatus();
-        setStatusBarColor();
 
+        initTheme();
         BaseAppManager.getInstance().addActivity(this);
 
         if (getContentViewLayoutID() != 0) {
@@ -188,5 +194,55 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
 
     public void showShortToast(String msg) {
         ToastUtil.show(this, msg);
+    }
+
+    protected void initTheme() {
+        int themeId = sp.getInt(Constants.THEME_SELECT);
+        switch (themeId) {
+            case 0:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.biliPink));
+                setTheme(R.style.BiLiPinkTheme);
+                break;
+            case 1:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.zhihuBlue));
+                setTheme(R.style.ZhiHuBlueTheme);
+                break;
+            case 2:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.kuanGreen));
+                setTheme(R.style.KuAnGreenTheme);
+                break;
+            case 3:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.cloudRed));
+                setTheme(R.style.CloudRedTheme);
+                break;
+            case 4:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.tengluoPurple));
+                setTheme(R.style.TengLuoPurpleTheme);
+                break;
+            case 5:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.seaBlue));
+                setTheme(R.style.SeaBlueTheme);
+                break;
+            case 6:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.grassGreen));
+                setTheme(R.style.GrassGreenTheme);
+                break;
+            case 7:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.coffeeBrown));
+                setTheme(R.style.CoffeeBrownTheme);
+                break;
+            case 8:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.lemonOrange));
+                setTheme(R.style.LemonOrangeTheme);
+                break;
+            case 9:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.startSkyGray));
+                setTheme(R.style.StartSkyGrayTheme);
+                break;
+            case 10:
+                setStatusBarTintColor(ContextCompat.getColor(this, R.color.nightActionbar));
+                setTheme(R.style.NightModeTheme);
+                break;
+        }
     }
 }

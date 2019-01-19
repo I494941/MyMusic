@@ -5,4 +5,9 @@ package com.wjf.mymusic.constants;
  */
 public interface Constants {
 
+     String BING_URL = "bing_url";
+     int THEME_SIZE = 11;
+     String IS_NIGHTMODE = "is_nightmode";
+     String THEME_SELECT = "theme_select";
+
 }

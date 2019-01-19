@@ -41,8 +41,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:gravity="bottom"
-                    android:text="没事的时候"
-                    android:textColor="@color/colorPrimary"
+                    android:text="@string/do_something"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <TextView
@@ -51,7 +51,7 @@
                     android:layout_marginLeft="10dp"
                     android:gravity="bottom"
                     android:text="@string/app_name"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>

@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">MyMusic</string>
+    <string name="app_name">听听音乐</string>
+    <string name="do_something">没事的时候</string>
+    <string name="theme">主题中心</string>
+    <string name="night_mode">夜间模式</string>
+    <string name="about">关于</string>
+    <string name="quit">退出</string>
 </resources>
