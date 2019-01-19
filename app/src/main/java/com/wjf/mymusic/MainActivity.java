@@ -12,15 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import butterknife.BindView;
 import com.bumptech.glide.Glide;
 import com.wjf.mymusic.base.BaseAppCompatActivity;
 import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.ui.themeActivity.ThemeActivity;
 import com.wjf.mymusic.util.LogUtil;
 import com.wjf.mymusic.util.ScreenUtil;
-
-import butterknife.BindView;
 
 /**
  * Created by wjf on 2019/1/14.
@@ -53,6 +51,7 @@ public class MainActivity extends BaseAppCompatActivity {
         mTvTitle.setText(R.string.app_name);
         initToolbar();
         initNav();
+
     }
 
     private void initStatusBar() {
@@ -62,7 +61,6 @@ public class MainActivity extends BaseAppCompatActivity {
         LogUtil.e("getStatusBarHeight", ScreenUtil.getStatusBarHeightByReflact(this) + "");
         mStatusView.setLayoutParams(layoutParams);
     }
-
 
     private void initToolbar() {
         setSupportActionBar(mToolbar);
@@ -98,7 +96,15 @@ public class MainActivity extends BaseAppCompatActivity {
                         finish();
                         break;
                     case R.id.nav_night_mode:
-                        showShortToast("模式");
+                        if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1)
+                            //当前为夜间模式，则恢复之前的主题
+                            sp.putInt(Constants.THEME_SELECT, sp.getInt(Constants.PRE_THEME_SELECT));
+                        else {
+                            //当前为白天模式，则切换到夜间模式
+                            sp.putInt(Constants.PRE_THEME_SELECT, sp.getInt(Constants.THEME_SELECT));
+                            sp.putInt(Constants.THEME_SELECT, Constants.THEME_SIZE - 1);
+                        }
+                        recreate();
                         break;
                     case R.id.nav_about_me:
                         showShortToast("关于");
@@ -124,5 +130,13 @@ public class MainActivity extends BaseAppCompatActivity {
         }
         finish();
         return super.onKeyDown(keyCode, event);
+    }
+
+    private void refreshNightModeTitle() {
+
+        if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1)
+            mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle("日间模式");
+        else
+            mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle("夜间模式");
     }
 }

@@ -76,10 +76,6 @@ public class ThemeActivity extends BaseToolbarActivity {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                if (position == (Constants.THEME_SIZE - 1))
-                    sp.putBoolean(Constants.IS_NIGHTMODE, true);
-                else if (sp.getBoolean(Constants.IS_NIGHTMODE))
-                    sp.putBoolean(Constants.IS_NIGHTMODE, false);
 
                 selectTheme = position;
                 sp.putInt(Constants.THEME_SELECT, position);
