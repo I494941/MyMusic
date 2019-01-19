@@ -5,20 +5,22 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-import butterknife.BindView;
+
 import com.bumptech.glide.Glide;
 import com.wjf.mymusic.base.BaseAppCompatActivity;
 import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.ui.themeActivity.ThemeActivity;
 import com.wjf.mymusic.util.LogUtil;
 import com.wjf.mymusic.util.ScreenUtil;
+
+import butterknife.BindView;
 
 /**
  * Created by wjf on 2019/1/14.
@@ -29,8 +31,6 @@ public class MainActivity extends BaseAppCompatActivity {
     View mStatusView;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.tv_title)
-    TextView mTvTitle;
     @BindView(R.id.nav_view)
     NavigationView mNavView;
     @BindView(R.id.drawer_layout)
@@ -47,11 +47,9 @@ public class MainActivity extends BaseAppCompatActivity {
     @Override
     protected void initViewsAndEvents() {
         initStatusBar();
-
-        mTvTitle.setText(R.string.app_name);
         initToolbar();
         initNav();
-
+        refreshNightModeTitle();
     }
 
     private void initStatusBar() {
@@ -66,7 +64,6 @@ public class MainActivity extends BaseAppCompatActivity {
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(false);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.drawer_menu);
         }
@@ -96,15 +93,18 @@ public class MainActivity extends BaseAppCompatActivity {
                         finish();
                         break;
                     case R.id.nav_night_mode:
-                        if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1)
+                        if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1) {
                             //当前为夜间模式，则恢复之前的主题
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                             sp.putInt(Constants.THEME_SELECT, sp.getInt(Constants.PRE_THEME_SELECT));
-                        else {
+                        } else {
                             //当前为白天模式，则切换到夜间模式
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                             sp.putInt(Constants.PRE_THEME_SELECT, sp.getInt(Constants.THEME_SELECT));
                             sp.putInt(Constants.THEME_SELECT, Constants.THEME_SIZE - 1);
                         }
                         recreate();
+                        mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_about_me:
                         showShortToast("关于");

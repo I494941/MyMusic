@@ -188,10 +188,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         }
     }
 
-    public void setStatusBarColor() {
-        setStatusBarTintColor(ContextCompat.getColor(this, R.color.colorPrimary));
-    }
-
     public void showShortToast(String msg) {
         ToastUtil.show(this, msg);
     }

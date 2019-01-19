@@ -1,6 +1,7 @@
 package com.wjf.mymusic.ui.themeActivity;
 
 import android.os.Build;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -83,6 +84,11 @@ public class ThemeActivity extends BaseToolbarActivity {
                 mRv.setBackgroundColor(getResources().getColor(mList.get(position).getBackground()));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                     getWindow().setStatusBarColor(getResources().getColor(mList.get(position).getColor()));
+
+                if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                else
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
                 for (int i = 0; i < mList.size(); i++) {
                     if (i == position)
