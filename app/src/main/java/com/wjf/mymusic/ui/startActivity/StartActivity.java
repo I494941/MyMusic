@@ -25,7 +25,7 @@ public class StartActivity extends BaseAppCompatActivity implements StartContrac
     @BindView(R.id.iv_bing)
     ImageView mIvBing;
 
-    private StartPresenter mPrensenter;
+    private StartPresenter mPrensenter= new StartPresenter(this, this);
     private SharePreferenceManager sp = new SharePreferenceManager(this);
 
     @Override
@@ -35,7 +35,6 @@ public class StartActivity extends BaseAppCompatActivity implements StartContrac
 
     @Override
     protected void initViewsAndEvents() {
-        mPrensenter = new StartPresenter(this, this);
         mPrensenter.getBingPic();
     }
 
@@ -43,11 +42,13 @@ public class StartActivity extends BaseAppCompatActivity implements StartContrac
     public void getBingPicSucc(String str) {
         sp.putString(Constants.BING_URL, str);
         Glide.with(StartActivity.this).load(str).into(mIvBing);
+        startAnimation();
     }
 
     @Override
-    public void getBingPicComplete() {
-        startAnimation();
+    public void getBingPicFail() {
+        startActivity(MainActivity.class);
+        finish();
     }
 
     private void startAnimation() {

@@ -25,12 +25,11 @@ public class ThemeAdapter extends BaseQuickAdapter<ThemeInfo, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, ThemeInfo item) {
-
         helper.setBackgroundRes(R.id.rl_theme_item, mSelectTheme == Constants.THEME_SIZE - 1 ? R.drawable.selector_layout_night : R.drawable.selector_layout_day)
                 .setBackgroundRes(R.id.tv_theme_select, mSelectTheme == Constants.THEME_SIZE - 1 ? R.drawable.shape_theme_btn_night : R.drawable.shape_theme_btn_day)
                 .setText(R.id.tv_theme_name, item.getName())
                 .setTextColor(R.id.tv_theme_name, mContext.getResources().getColor(item.getColor()))
-                .setText(R.id.tv_theme_select, item.isSelect() ? "使用中" : "使用")
+                .setText(R.id.tv_theme_select, item.isSelect() ? mContext.getString(R.string.applying) : mContext.getString(R.string.apply))
                 .setTextColor(R.id.tv_theme_select, item.isSelect() ? mContext.getResources().getColor(item.getColor()) : mContext.getResources().getColor(R.color.grey500));
 
         RoundedImageView roundedImageView = helper.getView(R.id.iv_theme);

@@ -1,7 +1,12 @@
 package com.wjf.mymusic.ui.startActivity;
 
+import com.wjf.mymusic.R;
 import com.wjf.mymusic.http.HttpManager;
+import com.wjf.mymusic.http.NoNetWorkException;
 import com.wjf.mymusic.util.HttpUtil;
+import com.wjf.mymusic.util.LogUtil;
+import com.wjf.mymusic.util.ToastUtil;
+
 import io.reactivex.observers.DisposableObserver;
 
 /**
@@ -27,17 +32,22 @@ public class StartPresenter implements StartContract.Presenter {
 
                     @Override
                     public void onNext(String s) {
+                        LogUtil.e("111111111111111111111", "s = " + s);
                         mView.getBingPicSucc(s);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        if (e instanceof NoNetWorkException)
+                            ToastUtil.show(mActivity, mActivity.getString(R.string.no_network_exception));
+                        else
+                            ToastUtil.show(mActivity, e.getMessage());
+                        mView.getBingPicFail();
                     }
 
                     @Override
                     public void onComplete() {
-                        mView.getBingPicComplete();
+
                     }
                 });
     }

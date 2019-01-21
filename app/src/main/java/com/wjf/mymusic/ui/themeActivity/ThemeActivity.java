@@ -28,7 +28,12 @@ public class ThemeActivity extends BaseToolbarActivity {
     @BindView(R.id.rv)
     RecyclerView mRv;
 
-    private String[] themeType = {"哔哩粉", "知乎蓝", "酷安绿", "网易红", "藤萝紫", "碧海蓝", "樱草绿", "咖啡棕", "柠檬橙", "星空灰", "夜间模式"};
+    private String[] themeType = {getString(R.string.biliPink),
+            getString(R.string.zhihuBlue),
+            getString(R.string.kuanGreen),
+            getString(R.string.cloudRed),
+            getString(R.string.tengluoPurple), getString(R.string.seaBlue), getString(R.string.grassGreen), getString(R.string.coffeeBrown),
+            getString(R.string.lemonOrange), getString(R.string.startSkyGray), getString(R.string.night_mode)};
     private int[] colors = {R.color.biliPink, R.color.zhihuBlue, R.color.kuanGreen, R.color.cloudRed,
             R.color.tengluoPurple, R.color.seaBlue, R.color.grassGreen, R.color.coffeeBrown,
             R.color.lemonOrange, R.color.startSkyGray, R.color.nightActionbar};
@@ -46,8 +51,6 @@ public class ThemeActivity extends BaseToolbarActivity {
 
     @Override
     protected void initViewsAndEvents() {
-        mTvTitle.setText("主题中心");
-
         selectTheme = sp.getInt(Constants.THEME_SELECT);
         initList();
         initRecyclerview();

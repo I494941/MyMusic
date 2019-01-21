@@ -38,7 +38,7 @@
         android:layout_marginRight="16dp"
         android:background="@drawable/shape_theme_btn_day"
         android:gravity="center"
-        android:text="使用"
+        android:text="@string/apply"
         android:textColor="@color/grey500"
         android:textSize="14sp" />
 

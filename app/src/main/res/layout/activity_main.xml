@@ -11,20 +11,14 @@
         android:layout_height="match_parent"
         android:background="?attr/appbg">
 
-        <View
-            android:id="@+id/statusView"
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="?attr/colorPrimary" />
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardElevation="0dp">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_below="@id/statusView"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            <include layout="@layout/common_toolbar" />
+        </android.support.v7.widget.CardView>
 
         <TextView
             android:layout_width="match_parent"

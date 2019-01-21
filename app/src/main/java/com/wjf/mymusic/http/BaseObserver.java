@@ -1,15 +1,18 @@
 package com.wjf.mymusic.http;
 
 import android.content.Context;
+
 import com.google.gson.internal.$Gson$Types;
+import com.wjf.mymusic.R;
 import com.wjf.mymusic.util.CommonConfig;
 import com.wjf.mymusic.util.GsonUtil;
 import com.wjf.mymusic.util.LogUtil;
 import com.wjf.mymusic.util.ToastUtil;
-import io.reactivex.observers.DisposableObserver;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+
+import io.reactivex.observers.DisposableObserver;
 
 public abstract class BaseObserver<T> extends DisposableObserver<String> {
 
@@ -46,7 +49,7 @@ public abstract class BaseObserver<T> extends DisposableObserver<String> {
     public void onError(Throwable e) {
         LogUtil.e(TAG + mType.toString(), "onError:" + e.getMessage());
         if (e instanceof NoNetWorkException)
-            ToastUtil.show(mContext, "当前网络不可用！");
+            ToastUtil.show(mContext, mContext.getString(R.string.no_network_exception));
         else {
             e.printStackTrace();
             ToastUtil.show(mContext, e.getMessage());

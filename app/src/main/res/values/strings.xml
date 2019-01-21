@@ -3,6 +3,33 @@
     <string name="do_something">没事的时候</string>
     <string name="theme">主题中心</string>
     <string name="night_mode">夜间模式</string>
+    <string name="day_mode">日间模式</string>
     <string name="about">关于</string>
     <string name="quit">退出</string>
+    <string name="re_press_quit">再按一次退出！</string>
+    <string name="no_network_exception">当前网络不可用！</string>
+
+    <string name="version_name">当前版本 </string>
+    <string name="can_not_find_version_name">寻找当前版本出错</string>
+
+    <string name="about_author">关于作者</string>
+    <string name="email">邮箱</string>
+    <string name="my_email">865494249@qq.com</string>
+    <string name="github">Github</string>
+    <string name="my_github">https://github.com/I494941</string>
+
+    <string name="apply">使用</string>
+    <string name="applying">使用中</string>
+
+    <string name="biliPink">哔哩粉</string>
+    <string name="zhihuBlue">知乎蓝</string>
+    <string name="kuanGreen">酷安绿</string>
+    <string name="cloudRed">网易红</string>
+    <string name="tengluoPurple">藤萝紫</string>
+    <string name="seaBlue">碧海蓝</string>
+    <string name="grassGreen">樱草绿</string>
+    <string name="coffeeBrown">咖啡棕</string>
+    <string name="lemonOrange">柠檬橙</string>
+    <string name="startSkyGray">星空灰</string>
+
 </resources>

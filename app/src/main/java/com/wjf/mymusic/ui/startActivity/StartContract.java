@@ -13,7 +13,7 @@ public interface StartContract {
 
         void getBingPicSucc(String str);
 
-        void getBingPicComplete();
+        void getBingPicFail();
     }
 
     interface Presenter extends BasePresenter {

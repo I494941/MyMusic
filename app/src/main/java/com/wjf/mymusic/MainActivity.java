@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.wjf.mymusic.base.BaseAppCompatActivity;
 import com.wjf.mymusic.constants.Constants;
+import com.wjf.mymusic.ui.about.AboutActivity;
 import com.wjf.mymusic.ui.themeActivity.ThemeActivity;
 import com.wjf.mymusic.util.LogUtil;
 import com.wjf.mymusic.util.ScreenUtil;
@@ -104,10 +105,9 @@ public class MainActivity extends BaseAppCompatActivity {
                             sp.putInt(Constants.THEME_SELECT, Constants.THEME_SIZE - 1);
                         }
                         recreate();
-                        mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_about_me:
-                        showShortToast("关于");
+                        startActivity(AboutActivity.class);
                         break;
                     case R.id.nav_quit:
                         finish();
@@ -122,7 +122,7 @@ public class MainActivity extends BaseAppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis() - exitTime) > 2000) {
-                showShortToast("再按一次退出!");
+                showShortToast(getString(R.string.re_press_quit));
                 exitTime = System.currentTimeMillis();
             } else
                 moveTaskToBack(true);
@@ -133,10 +133,9 @@ public class MainActivity extends BaseAppCompatActivity {
     }
 
     private void refreshNightModeTitle() {
-
         if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1)
-            mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle("日间模式");
+            mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle(R.string.night_mode);
         else
-            mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle("夜间模式");
+            mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle(R.string.day_mode);
     }
 }

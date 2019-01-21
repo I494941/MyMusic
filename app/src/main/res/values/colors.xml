@@ -33,15 +33,15 @@
     <color name="layout_night_press">#3b3b3b</color>
 
     <!--主题颜色-->
-    <!--酷安绿-->
-    <color name="kuanGreen">#4BAF4F</color>
-    <color name="kuanGreen50">#B04BAF4F</color>
-    <!--知乎蓝-->
-    <color name="zhihuBlue">#1F96F2</color>
-    <color name="zhihuBlue50">#B01F96F2</color>
     <!--哔哩粉-->
     <color name="biliPink">#FA7298</color>
     <color name="biliPink50">#B0FA7298</color>
+    <!--知乎蓝-->
+    <color name="zhihuBlue">#1F96F2</color>
+    <color name="zhihuBlue50">#B01F96F2</color>
+    <!--酷安绿-->
+    <color name="kuanGreen">#4BAF4F</color>
+    <color name="kuanGreen50">#B04BAF4F</color>
     <!--网易红-->
     <color name="cloudRed">#D33B30</color>
     <color name="cloudRed50">#B0D33B30</color>

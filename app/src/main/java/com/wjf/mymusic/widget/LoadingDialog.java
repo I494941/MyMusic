@@ -9,6 +9,7 @@ import com.wjf.mymusic.R;
 
 
 public class LoadingDialog extends Dialog {
+
     private Context mContext;
 
     public LoadingDialog(Context context) {

@@ -28,7 +28,12 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".ui.themeActivity.ThemeActivity" />
+        <activity
+            android:name=".ui.themeActivity.ThemeActivity"
+            android:label="@string/theme" />
+        <activity
+            android:name=".ui.about.AboutActivity"
+            android:label="@string/about" />
     </application>
 
 </manifest>

@@ -1,11 +1,14 @@
 package com.wjf.mymusic.base;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.wjf.mymusic.R;
+import com.wjf.mymusic.util.ScreenUtil;
 
 import butterknife.ButterKnife;
 
@@ -14,26 +17,34 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseToolbarActivity extends BaseAppCompatActivity {
+
     protected Toolbar mToolbar;
-    protected TextView mTvTitle;
+    protected View mStatusView;
 
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
         mToolbar = ButterKnife.findById(this, R.id.toolbar);
-        mTvTitle = ButterKnife.findById(this, R.id.tv_title);
+        mStatusView = ButterKnife.findById(this, R.id.statusView);
 
+        initStatusBar();
         initToolbar();
+    }
+
+    private void initStatusBar() {
+        setStatusBarTintColor(ContextCompat.getColor(this, R.color.transparent));
+        ViewGroup.LayoutParams layoutParams = mStatusView.getLayoutParams();
+        layoutParams.height = ScreenUtil.getStatusBarHeightByReflact(this);
+        mStatusView.setLayoutParams(layoutParams);
     }
 
     public void initToolbar() {
         if (mToolbar != null) {
-            mToolbar.setNavigationIcon(R.drawable.arrow_back);
             setSupportActionBar(mToolbar);
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
-                actionBar.setDisplayShowTitleEnabled(false);
                 actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setHomeAsUpIndicator(R.drawable.arrow_back);
             }
         }
     }
