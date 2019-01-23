@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
+import butterknife.BindView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wjf.mymusic.MainActivity;
 import com.wjf.mymusic.R;
@@ -18,8 +18,6 @@ import com.wjf.mymusic.ui.themeActivity.bean.ThemeInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-
 /**
  * Created by wjf on 2019/1/17.
  */
@@ -28,12 +26,7 @@ public class ThemeActivity extends BaseToolbarActivity {
     @BindView(R.id.rv)
     RecyclerView mRv;
 
-    private String[] themeType = {getString(R.string.biliPink),
-            getString(R.string.zhihuBlue),
-            getString(R.string.kuanGreen),
-            getString(R.string.cloudRed),
-            getString(R.string.tengluoPurple), getString(R.string.seaBlue), getString(R.string.grassGreen), getString(R.string.coffeeBrown),
-            getString(R.string.lemonOrange), getString(R.string.startSkyGray), getString(R.string.night_mode)};
+    private String[] themeType = {"哔哩粉", "知乎蓝", "酷安绿", "网易红", "藤萝紫", "碧海蓝", "樱草绿", "咖啡棕", "柠檬橙", "星空灰", "夜间模式"};
     private int[] colors = {R.color.biliPink, R.color.zhihuBlue, R.color.kuanGreen, R.color.cloudRed,
             R.color.tengluoPurple, R.color.seaBlue, R.color.grassGreen, R.color.coffeeBrown,
             R.color.lemonOrange, R.color.startSkyGray, R.color.nightActionbar};
