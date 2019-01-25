@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.wjf.mymusic.base.BaseAppCompatActivity;
 import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.ui.about.AboutActivity;
+import com.wjf.mymusic.ui.baseRecyclerViewActivity.BaseRecyclerViewActivity;
 import com.wjf.mymusic.ui.themeActivity.ThemeActivity;
 import com.wjf.mymusic.util.LogUtil;
 import com.wjf.mymusic.util.ScreenUtil;
@@ -110,7 +111,8 @@ public class MainActivity extends BaseAppCompatActivity {
                         startActivity(AboutActivity.class);
                         break;
                     case R.id.nav_quit:
-                        finish();
+                        //finish();
+                        startActivity(BaseRecyclerViewActivity.class);
                         break;
                 }
                 return true;
@@ -134,8 +136,8 @@ public class MainActivity extends BaseAppCompatActivity {
 
     private void refreshNightModeTitle() {
         if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1)
-            mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle(R.string.night_mode);
-        else
             mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle(R.string.day_mode);
+        else
+            mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle(R.string.night_mode);
     }
 }

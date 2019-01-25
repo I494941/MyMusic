@@ -5,6 +5,7 @@
     <string name="night_mode">夜间模式</string>
     <string name="day_mode">日间模式</string>
     <string name="about">关于</string>
+    <string name="BaseRecyclerView">BaseRecyclerView</string>
     <string name="quit">退出</string>
     <string name="re_press_quit">再按一次退出！</string>
     <string name="no_network_exception">当前网络不可用！</string>

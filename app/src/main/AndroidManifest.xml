@@ -34,6 +34,9 @@
         <activity
             android:name=".ui.about.AboutActivity"
             android:label="@string/about" />
+        <activity
+            android:name=".ui.baseRecyclerViewActivity.BaseRecyclerViewActivity"
+            android:label="@string/BaseRecyclerView" />
     </application>
 
 </manifest>
