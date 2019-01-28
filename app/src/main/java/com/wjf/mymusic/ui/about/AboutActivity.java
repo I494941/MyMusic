@@ -2,12 +2,15 @@ package com.wjf.mymusic.ui.about;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.view.View;
 import android.widget.TextView;
 
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
+import com.wjf.mymusic.ui.myDemo.MyDemosActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by wjf on 2019/1/21.
@@ -41,6 +44,15 @@ public class AboutActivity extends BaseToolbarActivity {
         } catch (Exception e) {
             e.printStackTrace();
             return getString(R.string.can_not_find_version_name);
+        }
+    }
+
+    @OnClick({R.id.iv_logo})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_logo:
+                startActivity(MyDemosActivity.class);
+                break;
         }
     }
 }

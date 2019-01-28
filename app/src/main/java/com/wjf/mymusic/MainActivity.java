@@ -17,7 +17,6 @@ import com.bumptech.glide.Glide;
 import com.wjf.mymusic.base.BaseAppCompatActivity;
 import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.ui.about.AboutActivity;
-import com.wjf.mymusic.ui.baseRecyclerViewActivity.BaseRecyclerViewActivity;
 import com.wjf.mymusic.ui.themeActivity.ThemeActivity;
 import com.wjf.mymusic.util.LogUtil;
 import com.wjf.mymusic.util.ScreenUtil;
@@ -111,8 +110,7 @@ public class MainActivity extends BaseAppCompatActivity {
                         startActivity(AboutActivity.class);
                         break;
                     case R.id.nav_quit:
-                        //finish();
-                        startActivity(BaseRecyclerViewActivity.class);
+                        finish();
                         break;
                 }
                 return true;

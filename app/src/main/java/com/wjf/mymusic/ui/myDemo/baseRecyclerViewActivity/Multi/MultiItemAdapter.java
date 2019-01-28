@@ -1,4 +1,4 @@
-package com.wjf.mymusic.ui.baseRecyclerViewActivity.Multi;
+package com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi;
 
 import android.support.annotation.Nullable;
 

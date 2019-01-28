@@ -1,4 +1,4 @@
-package com.wjf.mymusic.ui.baseRecyclerViewActivity;
+package com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity;
 
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,8 +8,8 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
-import com.wjf.mymusic.ui.baseRecyclerViewActivity.Multi.MultiAdapter;
-import com.wjf.mymusic.ui.baseRecyclerViewActivity.Multi.MultiBean;
+import com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi.MultiAdapter;
+import com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi.MultiBean;
 import com.wjf.mymusic.util.LogUtil;
 
 import java.util.ArrayList;
@@ -46,6 +46,7 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity {
             @Override
             public void onItemClick(int fpos, int spos) {
                 LogUtil.e("22222222222222222", "fpos = " + fpos + ", spos = " + spos);
+                showShortToast("fpos = " + fpos + ", spos = " + spos);
             }
         });
         mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -54,6 +55,7 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity {
                 switch (view.getId()) {
                     case R.id.ll:
                         LogUtil.e("11111111111111111", "position = " + position);
+                        showShortToast("position = " + position);
                         break;
                 }
             }
