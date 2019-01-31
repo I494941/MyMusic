@@ -32,9 +32,10 @@
     <string name="lemonOrange">柠檬橙</string>
     <string name="startSkyGray">星空灰</string>
 
-
-
     <string name="MyDemo">MyDemo</string>
     <string name="BaseRecyclerView">BaseRecyclerView</string>
+    <string name="Base_RecyclerView">Base_RecyclerView</string>
+    <string name="Multi_RecyclerView">Multi_RecyclerView</string>
+    <string name="bottom">底部</string>
 
 </resources>

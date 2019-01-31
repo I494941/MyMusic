@@ -36,14 +36,14 @@
             android:label="@string/about" />
 
 
-
-
-
         <activity
             android:name=".ui.myDemo.MyDemosActivity"
             android:label="@string/MyDemo" />
         <activity
-            android:name=".ui.myDemo.baseRecyclerViewActivity.BaseRecyclerViewActivity"
+            android:name=".ui.myDemo.baseRecyclerViewActivity.Multi.MultiRecyclerViewActivity"
+            android:label="@string/Multi_RecyclerView" />
+        <activity
+            android:name=".ui.myDemo.baseRecyclerViewActivity.base.BaseRecyclerViewActivity"
             android:label="@string/BaseRecyclerView" />
     </application>
 

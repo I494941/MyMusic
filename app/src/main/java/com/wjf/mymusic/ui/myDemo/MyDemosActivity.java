@@ -4,7 +4,8 @@ import android.view.View;
 
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
-import com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.BaseRecyclerViewActivity;
+import com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi.MultiRecyclerViewActivity;
+import com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.base.BaseRecyclerViewActivity;
 
 import butterknife.OnClick;
 
@@ -23,11 +24,14 @@ public class MyDemosActivity extends BaseToolbarActivity {
 
     }
 
-    @OnClick({R.id.tv_multi_recyclerview})
+    @OnClick({R.id.tv_base_recyclerview, R.id.tv_multi_recyclerview})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_multi_recyclerview:
+            case R.id.tv_base_recyclerview:
                 startActivity(BaseRecyclerViewActivity.class);
+                break;
+            case R.id.tv_multi_recyclerview:
+                startActivity(MultiRecyclerViewActivity.class);
                 break;
         }
     }

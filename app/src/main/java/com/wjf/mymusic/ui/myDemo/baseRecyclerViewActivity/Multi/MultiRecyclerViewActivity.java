@@ -1,4 +1,4 @@
-package com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity;
+package com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi;
 
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,8 +8,6 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
-import com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi.MultiAdapter;
-import com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi.MultiBean;
 import com.wjf.mymusic.util.LogUtil;
 
 import java.util.ArrayList;
@@ -19,7 +17,7 @@ import butterknife.BindView;
 /**
  * Created by wjf on 2019/1/21.
  */
-public class BaseRecyclerViewActivity extends BaseToolbarActivity {
+public class MultiRecyclerViewActivity extends BaseToolbarActivity {
 
     @BindView(R.id.rv)
     RecyclerView mRv;
@@ -29,7 +27,7 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity {
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.activity_multiitem;
+        return R.layout.activity_recycler;
     }
 
     @Override

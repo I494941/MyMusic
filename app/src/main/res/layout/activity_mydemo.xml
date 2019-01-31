@@ -8,13 +8,38 @@
     <include layout="@layout/common_toolbar" />
 
     <TextView
-        android:id="@+id/tv_multi_recyclerview"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_base_recyclerview"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/biliPink"
+        android:background="@drawable/changeble_top_corner5_bg"
+        android:gravity="center"
         android:padding="10dp"
-        android:text="Multi_RecyclerView"
+        android:text="@string/Base_RecyclerView"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_default" />
+
+    <TextView
+        android:id="@+id/tv_multi_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/changeble_no_corner5_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/Multi_RecyclerView"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_default" />
+
+    <TextView
+        android:id="@+id/tv_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/changeble_bottom_corner5_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/bottom"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_default" />
 </LinearLayout>
