@@ -32,6 +32,18 @@
         android:textSize="@dimen/text_size_default" />
 
     <TextView
+        android:id="@+id/tv_staggered_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/changeble_no_corner5_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/Staggered_RecyclerViewActivity"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_default" />
+
+    <TextView
         android:id="@+id/tv_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

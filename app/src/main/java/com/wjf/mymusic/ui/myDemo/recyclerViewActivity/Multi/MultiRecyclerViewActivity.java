@@ -1,4 +1,4 @@
-package com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi;
+package com.wjf.mymusic.ui.myDemo.recyclerViewActivity.Multi;
 
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +8,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
+import com.wjf.mymusic.ui.myDemo.BaseBean;
 import com.wjf.mymusic.util.LogUtil;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class MultiRecyclerViewActivity extends BaseToolbarActivity {
     @BindView(R.id.rv)
     RecyclerView mRv;
 
-    private ArrayList<MultiBean> mList = new ArrayList<>();
+    private ArrayList<BaseBean> mList = new ArrayList<>();
     private MultiAdapter mAdapter;
 
     @Override
@@ -63,22 +64,22 @@ public class MultiRecyclerViewActivity extends BaseToolbarActivity {
 
     private void initList() {
         for (int i = 0; i < 20; i++) {
-            MultiBean multiBean = new MultiBean();
-            multiBean.setName("姓名" + i);
+            BaseBean baseBean = new BaseBean();
+            baseBean.setName("姓名" + i);
             if (i % 2 == 0)
-                multiBean.setItemType(MultiBean.TYPE_1);
+                baseBean.setItemType(BaseBean.TYPE_1);
             else {
-                multiBean.setItemType(MultiBean.TYPE_2);
+                baseBean.setItemType(BaseBean.TYPE_2);
 
-                ArrayList<MultiBean.ItemBean> itemBeans = new ArrayList<>();
+                ArrayList<BaseBean.ItemBean> itemBeans = new ArrayList<>();
                 for (int j = 0; j < i; j++) {
-                    MultiBean.ItemBean itemBean = new MultiBean.ItemBean();
+                    BaseBean.ItemBean itemBean = new BaseBean.ItemBean();
                     itemBean.setName("性别=" + i + ",年龄=" + j);
                     itemBeans.add(itemBean);
                 }
-                multiBean.setItemBeans(itemBeans);
+                baseBean.setItemBeans(itemBeans);
             }
-            mList.add(multiBean);
+            mList.add(baseBean);
         }
         mAdapter.notifyDataSetChanged();
     }

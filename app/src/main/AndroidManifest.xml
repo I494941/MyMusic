@@ -40,11 +40,14 @@
             android:name=".ui.myDemo.MyDemosActivity"
             android:label="@string/MyDemo" />
         <activity
-            android:name=".ui.myDemo.baseRecyclerViewActivity.Multi.MultiRecyclerViewActivity"
+            android:name=".ui.myDemo.recyclerViewActivity.Multi.MultiRecyclerViewActivity"
             android:label="@string/Multi_RecyclerView" />
         <activity
-            android:name=".ui.myDemo.baseRecyclerViewActivity.base.BaseRecyclerViewActivity"
-            android:label="@string/BaseRecyclerView" />
+            android:name=".ui.myDemo.recyclerViewActivity.base.BaseRecyclerViewActivity"
+            android:label="@string/Base_RecyclerView" />
+        <activity
+            android:name=".ui.myDemo.recyclerViewActivity.staggered.StaggeredRecyclerViewActivity"
+            android:label="@string/Staggered_RecyclerViewActivity" />
     </application>
 
 </manifest>

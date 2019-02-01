@@ -1,4 +1,4 @@
-package com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi;
+package com.wjf.mymusic.ui.myDemo.recyclerViewActivity.Multi;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,13 +8,14 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wjf.mymusic.R;
+import com.wjf.mymusic.ui.myDemo.BaseBean;
 
 import java.util.List;
 
 /**
  * Created by wjf on 2019/1/24.
  */
-public class MultiAdapter extends BaseMultiItemQuickAdapter<MultiBean, BaseViewHolder> {
+public class MultiAdapter extends BaseMultiItemQuickAdapter<BaseBean, BaseViewHolder> {
 
     private OnItemClickedListener mOnItemClickedListener;
 
@@ -24,21 +25,21 @@ public class MultiAdapter extends BaseMultiItemQuickAdapter<MultiBean, BaseViewH
      *
      * @param data A new list is created out of this one to avoid mutable list
      */
-    public MultiAdapter(List<MultiBean> data, OnItemClickedListener onItemClickedListener) {
+    public MultiAdapter(List<BaseBean> data, OnItemClickedListener onItemClickedListener) {
         super(data);
         mOnItemClickedListener = onItemClickedListener;
-        addItemType(MultiBean.TYPE_1, R.layout.item_title_tv);
-        addItemType(MultiBean.TYPE_2, R.layout.item_recycler);
+        addItemType(BaseBean.TYPE_1, R.layout.item_title_tv);
+        addItemType(BaseBean.TYPE_2, R.layout.item_recycler);
     }
 
     @Override
-    protected void convert(final BaseViewHolder helper, final MultiBean item) {
+    protected void convert(final BaseViewHolder helper, final BaseBean item) {
         switch (helper.getItemViewType()) {
-            case MultiBean.TYPE_1:
+            case BaseBean.TYPE_1:
                 helper.setText(R.id.tv, item.getName())
                         .addOnClickListener(R.id.ll);
                 break;
-            case MultiBean.TYPE_2:
+            case BaseBean.TYPE_2:
                 RecyclerView rv = helper.getView(R.id.rv_item);
                 rv.setLayoutManager(new GridLayoutManager(mContext, 3));
                 rv.setNestedScrollingEnabled(false);//禁止滑动

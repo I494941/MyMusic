@@ -9,7 +9,7 @@
     <string name="re_press_quit">再按一次退出！</string>
     <string name="no_network_exception">当前网络不可用！</string>
 
-    <string name="version_name">当前版本 </string>
+    <string name="version_name">当前版本</string>
     <string name="can_not_find_version_name">寻找当前版本出错</string>
 
     <string name="about_author">关于作者</string>
@@ -33,9 +33,9 @@
     <string name="startSkyGray">星空灰</string>
 
     <string name="MyDemo">MyDemo</string>
-    <string name="BaseRecyclerView">BaseRecyclerView</string>
     <string name="Base_RecyclerView">Base_RecyclerView</string>
-    <string name="Multi_RecyclerView">Multi_RecyclerView</string>
+    <string name="Multi_RecyclerView">多布局</string>
+    <string name="Staggered_RecyclerViewActivity">瀑布流</string>
     <string name="bottom">底部</string>
 
 </resources>

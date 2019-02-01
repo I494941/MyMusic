@@ -1,4 +1,4 @@
-package com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.base;
+package com.wjf.mymusic.ui.myDemo.recyclerViewActivity.base;
 
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +8,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
+import com.wjf.mymusic.ui.myDemo.BaseBean;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity {
     @BindView(R.id.rv)
     RecyclerView mRv;
 
-    private ArrayList<BaseAdapterBean> mList = new ArrayList<>();
+    private ArrayList<BaseBean> mList = new ArrayList<>();
     private BaseAdapter mAdapter;
 
     @Override
@@ -52,7 +53,7 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity {
 
     private void initList() {
         for (int i = 0; i < 20; i++) {
-            BaseAdapterBean bean = new BaseAdapterBean();
+            BaseBean bean = new BaseBean();
             bean.setName("姓名");
             bean.setSex(i);
             mList.add(bean);

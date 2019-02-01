@@ -4,8 +4,9 @@ import android.view.View;
 
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
-import com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.Multi.MultiRecyclerViewActivity;
-import com.wjf.mymusic.ui.myDemo.baseRecyclerViewActivity.base.BaseRecyclerViewActivity;
+import com.wjf.mymusic.ui.myDemo.recyclerViewActivity.Multi.MultiRecyclerViewActivity;
+import com.wjf.mymusic.ui.myDemo.recyclerViewActivity.base.BaseRecyclerViewActivity;
+import com.wjf.mymusic.ui.myDemo.recyclerViewActivity.staggered.StaggeredRecyclerViewActivity;
 
 import butterknife.OnClick;
 
@@ -21,10 +22,10 @@ public class MyDemosActivity extends BaseToolbarActivity {
 
     @Override
     protected void initViewsAndEvents() {
-
+        //http://cn.bing.com/az/hprichbg/rb/MinnewankaBoathouse_ZH-CN0548323518_1920x1080.jpg      2019.02.01
     }
 
-    @OnClick({R.id.tv_base_recyclerview, R.id.tv_multi_recyclerview})
+    @OnClick({R.id.tv_base_recyclerview, R.id.tv_multi_recyclerview, R.id.tv_staggered_recyclerview})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_base_recyclerview:
@@ -32,6 +33,9 @@ public class MyDemosActivity extends BaseToolbarActivity {
                 break;
             case R.id.tv_multi_recyclerview:
                 startActivity(MultiRecyclerViewActivity.class);
+                break;
+            case R.id.tv_staggered_recyclerview:
+                startActivity(StaggeredRecyclerViewActivity.class);
                 break;
         }
     }
