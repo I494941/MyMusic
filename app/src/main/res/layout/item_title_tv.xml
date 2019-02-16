@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical">
 
-    <ImageView
+    <View
         android:id="@+id/iv"
         android:layout_width="5dp"
         android:layout_height="20dp"

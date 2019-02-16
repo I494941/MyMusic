@@ -15,8 +15,6 @@ public class BaseBean implements MultiItemEntity {
     private String name;
     private int sex;
     private String imgurl;
-    private int imgWidth;
-    private int imgHeight;
 
     private List<BaseBean.ItemBean> mItemBeans;
 
@@ -51,22 +49,6 @@ public class BaseBean implements MultiItemEntity {
 
     public void setImgurl(String imgurl) {
         this.imgurl = imgurl;
-    }
-
-    public int getImgWidth() {
-        return imgWidth;
-    }
-
-    public void setImgWidth(int imgWidth) {
-        this.imgWidth = imgWidth;
-    }
-
-    public int getImgHeight() {
-        return imgHeight;
-    }
-
-    public void setImgHeight(int imgHeight) {
-        this.imgHeight = imgHeight;
     }
 
     public List<BaseBean.ItemBean> getItemBeans() {
