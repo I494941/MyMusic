@@ -22,8 +22,7 @@ public class MyDemosActivity extends BaseToolbarActivity {
 
     @Override
     protected void initViewsAndEvents() {
-        //http://cn.bing.com/az/hprichbg/rb/MinnewankaBoathouse_ZH-CN0548323518_1920x1080.jpg      2019.02.01
-        //http://cn.bing.com/az/hprichbg/rb/PangolinDay_ZH-CN4393242380_1920x1080.jpg      2019.02.16
+
     }
 
     @OnClick({R.id.tv_base_recyclerview, R.id.tv_multi_recyclerview, R.id.tv_staggered_recyclerview})
