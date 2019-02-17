@@ -53,6 +53,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
     /*BaseQuickAdapter*/
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    /*SmartRefreshLayout*/
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'//没有使用特殊Header，可以不加这行
 
     api 'com.makeramen:roundedimageview:2.3.0'
 }

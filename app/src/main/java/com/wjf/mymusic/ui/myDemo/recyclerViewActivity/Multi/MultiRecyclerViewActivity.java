@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
 import com.wjf.mymusic.ui.myDemo.BaseBean;
@@ -22,6 +23,8 @@ public class MultiRecyclerViewActivity extends BaseToolbarActivity {
 
     @BindView(R.id.rv)
     RecyclerView mRv;
+    @BindView(R.id.refresh_layout)
+    SmartRefreshLayout mRefreshLayout;
 
     private ArrayList<BaseBean> mList = new ArrayList<>();
     private MultiAdapter mAdapter;
@@ -39,7 +42,6 @@ public class MultiRecyclerViewActivity extends BaseToolbarActivity {
 
     private void initRecyclerview() {
         mRv.setLayoutManager(new LinearLayoutManager(mContext));
-        mRv.setFocusable(false);//去焦点，否则RecyclerView显示在最上面
         mRv.addItemDecoration(new DividerItemDecoration(mContext, LinearLayoutManager.VERTICAL));//分割线
         mAdapter = new MultiAdapter(mList, new MultiAdapter.OnItemClickedListener() {
             @Override

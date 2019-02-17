@@ -12,11 +12,12 @@ public class BaseBean implements MultiItemEntity {
     public static final int TYPE_2 = 2;
     private int itemType;
 
-    private String name;
+    private String name = "姓名";
     private int sex;
+    private int age;
     private String imgurl;
 
-    private List<BaseBean.ItemBean> mItemBeans;
+    private List<ItemBean> mItemBeans;
 
     @Override
     public int getItemType() {
@@ -43,6 +44,14 @@ public class BaseBean implements MultiItemEntity {
         this.sex = sex;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getImgurl() {
         return imgurl;
     }
@@ -51,11 +60,11 @@ public class BaseBean implements MultiItemEntity {
         this.imgurl = imgurl;
     }
 
-    public List<BaseBean.ItemBean> getItemBeans() {
+    public List<ItemBean> getItemBeans() {
         return mItemBeans;
     }
 
-    public void setItemBeans(List<BaseBean.ItemBean> itemBeans) {
+    public void setItemBeans(List<ItemBean> itemBeans) {
         mItemBeans = itemBeans;
     }
 

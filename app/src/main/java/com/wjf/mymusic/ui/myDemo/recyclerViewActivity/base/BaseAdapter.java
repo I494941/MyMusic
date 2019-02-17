@@ -14,13 +14,12 @@ import java.util.List;
  */
 public class BaseAdapter extends BaseQuickAdapter<BaseBean, BaseViewHolder> {
 
-
     public BaseAdapter(int layoutResId, @Nullable List<BaseBean> data) {
         super(layoutResId, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, BaseBean item) {
-        helper.setText(R.id.tv, item.getName() + item.getSex());
+        helper.setText(R.id.tv, item.getName() + ":呵呵,年龄:" + item.getAge() + ",性别:" + (0 == item.getSex() ? "女" : "男"));
     }
 }
