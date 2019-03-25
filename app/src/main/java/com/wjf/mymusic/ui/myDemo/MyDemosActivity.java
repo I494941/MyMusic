@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
+import com.wjf.mymusic.ui.myDemo.eventbusActivity.EventBusFirstActivity;
 import com.wjf.mymusic.ui.myDemo.recyclerViewActivity.Multi.MultiRecyclerViewActivity;
 import com.wjf.mymusic.ui.myDemo.recyclerViewActivity.base.BaseRecyclerViewActivity;
 import com.wjf.mymusic.ui.myDemo.recyclerViewActivity.staggered.StaggeredRecyclerViewActivity;
@@ -25,7 +26,7 @@ public class MyDemosActivity extends BaseToolbarActivity {
 
     }
 
-    @OnClick({R.id.tv_base_recyclerview, R.id.tv_multi_recyclerview, R.id.tv_staggered_recyclerview})
+    @OnClick({R.id.tv_base_recyclerview, R.id.tv_multi_recyclerview, R.id.tv_staggered_recyclerview, R.id.tv_eventbus})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_base_recyclerview:
@@ -36,6 +37,9 @@ public class MyDemosActivity extends BaseToolbarActivity {
                 break;
             case R.id.tv_staggered_recyclerview:
                 startActivity(StaggeredRecyclerViewActivity.class);
+                break;
+            case R.id.tv_eventbus:
+                startActivity(EventBusFirstActivity.class);
                 break;
         }
     }

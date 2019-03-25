@@ -10,4 +10,5 @@ public interface Constants {
      String THEME_SELECT = "theme_select";
      String PRE_THEME_SELECT = "pre_theme_select";
 
+     int PAGE_SIZE = 10;
 }

@@ -1,10 +1,17 @@
 package com.wjf.mymusic.ui.myDemo.recyclerViewActivity.staggered;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
+import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.ui.myDemo.BaseBean;
 
 import java.util.ArrayList;
@@ -14,10 +21,12 @@ import butterknife.BindView;
 /**
  * Created by wjf on 2019/2/1.
  */
-public class StaggeredRecyclerViewActivity extends BaseToolbarActivity {
+public class StaggeredRecyclerViewActivity extends BaseToolbarActivity implements OnRefreshLoadMoreListener {
 
     @BindView(R.id.rv)
     RecyclerView mRv;
+    @BindView(R.id.refresh_layout)
+    SmartRefreshLayout mRefreshLayout;
 
     //图片链接
     private String[] mDatas = {
@@ -25,6 +34,8 @@ public class StaggeredRecyclerViewActivity extends BaseToolbarActivity {
             "http://cn.bing.com/az/hprichbg/rb/MinnewankaBoathouse_ZH-CN0548323518_1920x1080.jpg",
             "http://cn.bing.com/az/hprichbg/rb/PangolinDay_ZH-CN4393242380_1920x1080.jpg",
             "http://cn.bing.com/az/hprichbg/rb/GBBC_ZH-CN4481989355_1920x1080.jpg",
+            "http://cn.bing.com/az/hprichbg/rb/PlatteRiver_ZH-CN4687283533_1920x1080.jpg",
+            "http://cn.bing.com/th?id=OHR.AthensNight_ZH-CN1280970241_1920x1080.jpg&rf=NorthMale_1920x1081920x1080.jpg",
             "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1240426408,3396216424&fm=27&gp=0.jpg",
             "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1765208127,2618259413&fm=27&gp=0.jpg",
             "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1447507835,3654535229&fm=27&gp=0.jpg",
@@ -80,14 +91,18 @@ public class StaggeredRecyclerViewActivity extends BaseToolbarActivity {
     private StaggeredAdapter mAdapter;
     private int mSpan = 2;
 
+    private int pageNum = 0;
+    private int totalPage = 0;
+
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.activity_recycler;
+        return R.layout.activity_smartrefreshlayout_recycler;
     }
 
     @Override
     protected void initViewsAndEvents() {
         initRecyclerview();
+        mRefreshLayout.setOnRefreshLoadMoreListener(this);
         initList();
     }
 
@@ -98,10 +113,18 @@ public class StaggeredRecyclerViewActivity extends BaseToolbarActivity {
         manager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         mRv.setLayoutManager(manager);
         mRv.setItemAnimator(null);
+        mRv.setFocusable(false);//去焦点，否则RecyclerView显示在最上面
+        mRv.setNestedScrollingEnabled(false);//去滑动
         //设置分割线
-        mRv.addItemDecoration(new StoreItemDecoration(30,30));
+        mRv.addItemDecoration(new StoreItemDecoration(30, 30));
 
         mAdapter = new StaggeredAdapter(R.layout.item_iv_tv, mList, mSpan);
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                showShortToast("点击图片：" + (position + 1));
+            }
+        });
         mRv.setAdapter(mAdapter);
         mRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -116,11 +139,46 @@ public class StaggeredRecyclerViewActivity extends BaseToolbarActivity {
     }
 
     private void initList() {
-        for (int i = 0; i < mDatas.length; i++) {
-            BaseBean baseBean = new BaseBean();
-            baseBean.setImgurl(mDatas[i]);
-            mList.add(baseBean);
+        totalPage = mDatas.length % Constants.PAGE_SIZE == 0 ? mDatas.length / Constants.PAGE_SIZE : mDatas.length / Constants.PAGE_SIZE + 1;
+
+        if (pageNum == 0)
+            mList.clear();
+
+        int preSize = mList.size();
+
+        for (int i = pageNum * Constants.PAGE_SIZE; i < (pageNum + 1) * Constants.PAGE_SIZE; i++) {
+            if (i < mDatas.length) {
+                final BaseBean baseBean = new BaseBean();
+                baseBean.setImgurl(mDatas[i]);
+                mList.add(baseBean);
+            }
         }
-        mAdapter.notifyDataSetChanged();
+
+        if (pageNum == 0)
+            mAdapter.notifyDataSetChanged();
+        else
+            mAdapter.notifyItemInserted(preSize);
+
+        if (mList.size() > 0)
+            mRefreshLayout.setEnableLoadMore(true);
+        else
+            mRefreshLayout.setEnableLoadMore(false);
+    }
+
+    @Override
+    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+        if (pageNum < totalPage) {
+            pageNum++;
+            initList();
+        } else
+            showShortToast("已无更多信息！");
+        refreshLayout.finishLoadMore();
+    }
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+        pageNum = 0;
+        initList();
+        refreshLayout.finishRefresh();
     }
 }

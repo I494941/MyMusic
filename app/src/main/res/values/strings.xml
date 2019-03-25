@@ -36,6 +36,10 @@
     <string name="Base_RecyclerView">Base_RecyclerView</string>
     <string name="Multi_RecyclerView">多布局</string>
     <string name="Staggered_RecyclerViewActivity">瀑布流</string>
+    <string name="EventBus">EventBus</string>
+    <string name="EventBusFirstActivity">EventBusFirstActivity</string>
+    <string name="EventBusSecondActivity">EventBusSecondActivity</string>
+    <string name="EventBusThirdActivity">EventBusThirdActivity</string>
     <string name="bottom">底部</string>
 
 </resources>

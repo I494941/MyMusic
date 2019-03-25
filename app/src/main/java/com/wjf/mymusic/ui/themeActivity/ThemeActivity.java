@@ -39,7 +39,7 @@ public class ThemeActivity extends BaseToolbarActivity {
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.activity_theme;
+        return R.layout.activity_recycler;
     }
 
     @Override
@@ -47,7 +47,6 @@ public class ThemeActivity extends BaseToolbarActivity {
         selectTheme = sp.getInt(Constants.THEME_SELECT);
         initList();
         initRecyclerview();
-
     }
 
     private void initList() {

@@ -32,11 +32,19 @@ public class StaggeredAdapter extends BaseQuickAdapter<BaseBean, BaseViewHolder>
     @Override
     protected void convert(BaseViewHolder helper, BaseBean item) {
 
-        helper.setText(R.id.tv, "图片:" + (helper.getAdapterPosition() + 1))
-                .addOnClickListener(R.id.iv)
-                .addOnClickListener(R.id.tv);
+        helper.setText(R.id.tv, "图片:" + (helper.getAdapterPosition() + 1));
 
         final ImageView iv = helper.getView(R.id.iv);
+
+
+        //        GlideUtil.setImage(mContext, item.getImgurl(), iv, R.mipmap.ic_launcher);
+        //        //得到控件的高度
+        //        ViewGroup.LayoutParams lpIv = iv.getLayoutParams();
+        //        //设置高度
+        //        lpIv.height = item.getImgHeight();
+        //        iv.setLayoutParams(lpIv);
+
+
         final String url = item.getImgurl();
         GlideUtil.setImageResource(mContext, R.mipmap.ic_launcher, iv);//设置默认图片，防止图片加载失败(图片加载失败，随机加载其他图片(可能是加载上一个图片))
         Glide.with(mContext)

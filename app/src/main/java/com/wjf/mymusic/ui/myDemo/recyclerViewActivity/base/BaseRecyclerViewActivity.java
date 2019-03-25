@@ -11,18 +11,17 @@ import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import butterknife.BindView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
+import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.ui.myDemo.BaseBean;
 
 import java.util.ArrayList;
-
-import butterknife.BindView;
 
 /**
  * Created by wjf on 2019/1/21.
@@ -42,7 +41,7 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity implements OnR
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.activity_recycler;
+        return R.layout.activity_smartrefreshlayout_recycler;
     }
 
     @Override
@@ -55,8 +54,8 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity implements OnR
 
     private void initRecyclerview() {
         mRv.setLayoutManager(new LinearLayoutManager(mContext));
-        //mRv.setFocusable(false);//去焦点，否则RecyclerView显示在最上面
-        //mRv.setNestedScrollingEnabled(false);//去滑动
+        mRv.setFocusable(false);//去焦点，否则RecyclerView显示在最上面
+        mRv.setNestedScrollingEnabled(false);//去滑动
         mRv.addItemDecoration(new DividerItemDecoration(mContext, LinearLayoutManager.VERTICAL));//分割线
         mAdapter = new BaseAdapter(R.layout.item_tv, mList);
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -87,7 +86,7 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity implements OnR
         if (pageNum == 0)
             mList.clear();
 
-        for (int i = pageNum * 10; i < (pageNum + 1) * 10; i++) {
+        for (int i = pageNum * Constants.PAGE_SIZE; i < (pageNum + 1) * Constants.PAGE_SIZE; i++) {
             BaseBean bean = new BaseBean();
             bean.setAge(i);
             bean.setSex(i % 2);

@@ -36,6 +36,7 @@
             android:label="@string/about" />
 
 
+        //我的
         <activity
             android:name=".ui.myDemo.MyDemosActivity"
             android:label="@string/MyDemo" />
@@ -48,6 +49,15 @@
         <activity
             android:name=".ui.myDemo.recyclerViewActivity.staggered.StaggeredRecyclerViewActivity"
             android:label="@string/Staggered_RecyclerViewActivity" />
+        <activity
+            android:name=".ui.myDemo.eventbusActivity.EventBusFirstActivity"
+            android:label="@string/EventBusFirstActivity" />
+        <activity
+            android:name=".ui.myDemo.eventbusActivity.EventBusSecondActivity"
+            android:label="@string/EventBusSecondActivity" />
+        <activity
+            android:name=".ui.myDemo.eventbusActivity.EventBusThirdActivity"
+            android:label="@string/EventBusThirdActivity" />
     </application>
 
 </manifest>

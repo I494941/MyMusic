@@ -2,56 +2,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <include layout="@layout/common_toolbar" />
 
-    <TextView
-        android:id="@+id/tv_base_recyclerview"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/changeble_top_corner5_bg"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="@string/Base_RecyclerView"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_default" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_multi_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/changeble_no_corner5_bg"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="@string/Multi_RecyclerView"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_default" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_staggered_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/changeble_no_corner5_bg"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="@string/Staggered_RecyclerViewActivity"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_default" />
+            <TextView
+                android:id="@+id/tv_base_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_top_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/Base_RecyclerView"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default" />
 
-    <TextView
-        android:id="@+id/tv_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/changeble_bottom_corner5_bg"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="@string/bottom"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_default" />
+            <TextView
+                android:id="@+id/tv_multi_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_no_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/Multi_RecyclerView"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default" />
+
+            <TextView
+                android:id="@+id/tv_staggered_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_no_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/Staggered_RecyclerViewActivity"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default" />
+
+            <TextView
+                android:id="@+id/tv_eventbus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_no_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/EventBus"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default" />
+
+            <TextView
+                android:id="@+id/tv_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_bottom_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/bottom"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
