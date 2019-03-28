@@ -36,6 +36,7 @@ public class StaggeredRecyclerViewActivity extends BaseToolbarActivity implement
             "http://cn.bing.com/az/hprichbg/rb/GBBC_ZH-CN4481989355_1920x1080.jpg",
             "http://cn.bing.com/az/hprichbg/rb/PlatteRiver_ZH-CN4687283533_1920x1080.jpg",
             "http://cn.bing.com/th?id=OHR.AthensNight_ZH-CN1280970241_1920x1080.jpg&rf=NorthMale_1920x1081920x1080.jpg",
+            "http://cn.bing.com/th?id=OHR.RufousTailed_ZH-CN1593368869_1920x1080.jpg&rf=NorthMale_1920x1081920x1080.jpg",
             "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1240426408,3396216424&fm=27&gp=0.jpg",
             "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1765208127,2618259413&fm=27&gp=0.jpg",
             "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1447507835,3654535229&fm=27&gp=0.jpg",

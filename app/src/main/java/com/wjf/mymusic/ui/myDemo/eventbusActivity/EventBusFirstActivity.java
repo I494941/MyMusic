@@ -29,7 +29,7 @@ public class EventBusFirstActivity extends BaseToolbarActivity {
     @Override
     protected void initViewsAndEvents() {
         EventBus.getDefault().register(this);
-        mTv.setText("EventBusFirstActivity");
+        mTv.setText("MapActivity");
     }
 
     @OnClick(R.id.tv)
@@ -48,8 +48,8 @@ public class EventBusFirstActivity extends BaseToolbarActivity {
     public void Event(MessageEvent messageEvent) {
         mTv.setText(messageEvent.getMessage());
 
-        LogUtil.e("1111111+EventBusFirstActivity", " = ");
-        LogUtil.e("1111111+EventBusFirstActivity", " = " + messageEvent.getMessage());
+        LogUtil.e("1111111+MapActivity", " = ");
+        LogUtil.e("1111111+MapActivity", " = " + messageEvent.getMessage());
     }
 
     /**
@@ -60,8 +60,8 @@ public class EventBusFirstActivity extends BaseToolbarActivity {
     public void Event(MessageEvent2 messageEvent2) {
         mTv.setText(messageEvent2.getMessage());
 
-        LogUtil.e("2222222+EventBusFirstActivity", " = ");
-        LogUtil.e("2222222+EventBusFirstActivity", " = " + messageEvent2.getMessage());
+        LogUtil.e("2222222+MapActivity", " = ");
+        LogUtil.e("2222222+MapActivity", " = " + messageEvent2.getMessage());
     }
 
     @Override

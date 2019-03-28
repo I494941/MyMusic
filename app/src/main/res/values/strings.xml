@@ -40,6 +40,8 @@
     <string name="EventBusFirstActivity">EventBusFirstActivity</string>
     <string name="EventBusSecondActivity">EventBusSecondActivity</string>
     <string name="EventBusThirdActivity">EventBusThirdActivity</string>
+    <string name="BaiduMap">百度地图</string>
+    <string name="BaiduMapInfo">百度地图-获取信息</string>
     <string name="bottom">底部</string>
 
 </resources>

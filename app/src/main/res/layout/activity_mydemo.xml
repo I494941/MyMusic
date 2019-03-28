@@ -64,6 +64,30 @@
                 android:textSize="@dimen/text_size_default" />
 
             <TextView
+                android:id="@+id/tv_baidu_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_no_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/BaiduMap"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default" />
+
+            <TextView
+                android:id="@+id/tv_baidu_map_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_no_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/BaiduMapInfo"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default" />
+
+            <TextView
                 android:id="@+id/tv_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
