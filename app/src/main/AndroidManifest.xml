@@ -28,6 +28,16 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- SD卡读取权限，用于写入对象存储BOS数据-->
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 用于加快GPS首次定位-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 用于Android M及以上系统，申请加入忽略电池优化白名单-->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
     <application
         android:name=".app.MyApplication"
@@ -90,10 +100,14 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="zWyNof0YjPg5rjeolCDsaYrSpKIFURkw" />
+        <!--定位-->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
+
+        <!--服务：获取定位信息-->
+        <service android:name=".ui.myDemo.baidumap.service.LocationService" />
 
         <activity
             android:name=".ui.myDemo.baidumap.mapInfo.MapInfoActivity"
