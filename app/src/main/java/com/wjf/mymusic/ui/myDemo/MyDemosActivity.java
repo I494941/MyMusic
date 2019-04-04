@@ -1,7 +1,9 @@
 package com.wjf.mymusic.ui.myDemo;
 
+import android.Manifest;
 import android.view.View;
 
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
 import com.wjf.mymusic.ui.myDemo.baidumap.map.MapActivity;
@@ -17,6 +19,8 @@ import butterknife.OnClick;
  * Created by wjf on 2019/1/28.
  */
 public class MyDemosActivity extends BaseToolbarActivity {
+
+    final RxPermissions rxPermissions = new RxPermissions(this);
 
     @Override
     protected int getContentViewLayoutID() {
@@ -45,7 +49,16 @@ public class MyDemosActivity extends BaseToolbarActivity {
                 startActivity(EventBusFirstActivity.class);
                 break;
             case R.id.tv_baidu_map:
-                startActivity(MapActivity.class);
+                rxPermissions
+                        .request(Manifest.permission.ACCESS_FINE_LOCATION,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.READ_EXTERNAL_STORAGE)
+                        .subscribe(granted -> {
+                            if (granted) { // Always true pre-M
+                                // I can control the Location now
+                                startActivity(MapActivity.class);
+                            }
+                        });
                 break;
             case R.id.tv_baidu_map_info:
                 startActivity(MapInfoActivity.class);

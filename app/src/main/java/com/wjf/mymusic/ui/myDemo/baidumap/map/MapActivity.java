@@ -44,18 +44,15 @@ public class MapActivity extends BaseToolbarActivity {
 
         locationClient = new LocationClient(this);
 
-        LocationUtil.getLocationContinue(locationClient, 1000, new LocationUtil.OnResponse() {
-            @Override
-            public void getAddrDetail(BDLocation location) {
+        LocationUtil.getLocationContinue(locationClient, 1000, location -> {
 
-                MyLocationData locData = new MyLocationData.Builder()
-                        .accuracy(location.getRadius())
-                        // 此处设置开发者获取到的方向信息，顺时针0-360
-                        .direction(location.getDirection()).latitude(location.getLatitude())
-                        .longitude(location.getLongitude()).build();
+            MyLocationData locData = new MyLocationData.Builder()
+                    .accuracy(location.getRadius())
+                    // 此处设置开发者获取到的方向信息，顺时针0-360
+                    .direction(location.getDirection()).latitude(location.getLatitude())
+                    .longitude(location.getLongitude()).build();
 
-                mBaiduMap.setMyLocationData(locData);
-            }
+            mBaiduMap.setMyLocationData(locData);
         });
     }
 

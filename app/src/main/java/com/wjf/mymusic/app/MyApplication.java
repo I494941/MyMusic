@@ -1,6 +1,5 @@
 package com.wjf.mymusic.app;
 
-import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
@@ -18,10 +17,13 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.sp.SharePreferenceManager;
 
+import org.litepal.LitePal;
+import org.litepal.LitePalApplication;
+
 /**
  * Created by wjf on 2019/1/19.
  */
-public class MyApplication extends Application {
+public class MyApplication extends LitePalApplication {
 
     private static Context mContext;
     protected SharePreferenceManager sp = new SharePreferenceManager(this);
@@ -53,6 +55,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
+        // 初始化
+        LitePal.initialize(this);
         initNightMode();
         initBaiduMap();
 

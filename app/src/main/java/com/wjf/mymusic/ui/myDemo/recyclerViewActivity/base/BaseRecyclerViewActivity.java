@@ -11,7 +11,7 @@ import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import butterknife.BindView;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -22,6 +22,8 @@ import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.ui.myDemo.BaseBean;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
 
 /**
  * Created by wjf on 2019/1/21.
@@ -58,12 +60,7 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity implements OnR
         mRv.setNestedScrollingEnabled(false);//去滑动
         mRv.addItemDecoration(new DividerItemDecoration(mContext, LinearLayoutManager.VERTICAL));//分割线
         mAdapter = new BaseAdapter(R.layout.item_tv, mList);
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                showShortToast("点击:" + mList.get(position).getName() + mList.get(position).getSex());
-            }
-        });
+        mAdapter.setOnItemClickListener((adapter, view, position) -> showShortToast("点击:" + mList.get(position).getName() + mList.get(position).getSex()));
 
         RelativeLayout rlEmpty = (RelativeLayout) getLayoutInflater().inflate(R.layout.empty_view, null);
         TextView tvEmpty = rlEmpty.findViewById(R.id.tv_empty);
@@ -71,12 +68,7 @@ public class BaseRecyclerViewActivity extends BaseToolbarActivity implements OnR
         style.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.red)), 8, 10, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         style.setSpan(new AbsoluteSizeSpan(20, true), 8, 10, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         tvEmpty.setText(style);
-        rlEmpty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showShortToast("哈哈哈哈哈哈哈哈哈");
-            }
-        });
+        rlEmpty.setOnClickListener(v -> showShortToast("哈哈哈哈哈哈哈哈哈"));
         mAdapter.setEmptyView(rlEmpty);
 
         mRv.setAdapter(mAdapter);
