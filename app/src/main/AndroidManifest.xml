@@ -110,7 +110,8 @@
 
         <activity
             android:name=".ui.myDemo.baidumap.navi.NavigationGuideActivity"
-            android:label="@string/BaiduMap" />
+            android:label="@string/BaiduMap"
+            android:theme="@style/AppTheme.Fullscreen"/>
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
