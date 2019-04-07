@@ -13,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
     buildTypes {
         release {
@@ -23,6 +24,12 @@ android {
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
     }
 }
 
@@ -67,6 +74,9 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.0.0'
     /*百度地图*/
     implementation files('libs/BaiduLBS_Android.jar')
+    api files('libs/galaxy_lite.jar')
+    api(name: 'NaviTts', ext: 'aar')
+    api(name: 'onsdk_all', ext: 'aar')
     /*litepal*/
     implementation 'org.litepal.android:java:3.0.0'
     /*rxpermissions*/

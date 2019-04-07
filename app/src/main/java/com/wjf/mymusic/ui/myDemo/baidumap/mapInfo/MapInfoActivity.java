@@ -15,24 +15,25 @@ import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.OnClick;
+import com.baidu.navisdk.adapter.BNRoutePlanNode;
+import com.baidu.navisdk.adapter.BaiduNaviManagerFactory;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
 import com.wjf.mymusic.ui.myDemo.baidumap.adapter.LocationAdapter;
+import com.wjf.mymusic.ui.myDemo.baidumap.navi.NavigationUtil;
 import com.wjf.mymusic.ui.myDemo.baidumap.service.LocationService;
 import com.wjf.mymusic.ui.myDemo.litepalBean.LocationBean;
 import com.wjf.mymusic.ui.myDemo.litepalBean.LocationBean2;
 import com.wjf.mymusic.util.LocationUtil;
 import com.wjf.mymusic.util.LogUtil;
-
+import com.wjf.mymusic.util.ToastUtil;
 import org.litepal.LitePal;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * Created by wjf on 2019/3/28.
@@ -69,7 +70,10 @@ public class MapInfoActivity extends BaseToolbarActivity {
         } else {
             mTv1.setText("开启服务");
         }
+
         initRecyclerView();
+
+        NavigationUtil.initNavi(this);
     }
 
     private void initRecyclerView() {
@@ -132,7 +136,7 @@ public class MapInfoActivity extends BaseToolbarActivity {
         unregisterReceiver(mBroadcastReceiver);
     }
 
-    @OnClick({R.id.tv1, R.id.tv2, R.id.tv3, R.id.tv4})
+    @OnClick({R.id.tv1, R.id.tv2, R.id.tv3, R.id.tv4, R.id.tv5})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv1:
@@ -199,6 +203,12 @@ public class MapInfoActivity extends BaseToolbarActivity {
                             }
                         });
                 break;
+            case R.id.tv5:
+                if (BaiduNaviManagerFactory.getBaiduNaviManager().isInited()) {
+                    ToastUtil.show(mContext, "正在算路，请稍等...");
+                    NavigationUtil.routeplanToNavi(mContext, BNRoutePlanNode.CoordinateType.BD09LL, 116, 35, "我的位置", 117, 36, null);
+                    break;
+                }
         }
     }
 

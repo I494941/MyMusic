@@ -108,9 +108,14 @@
             android:name=".ui.myDemo.baidumap.map.MapActivity"
             android:label="@string/BaiduMap" />
 
+        <activity
+            android:name=".ui.myDemo.baidumap.navi.NavigationGuideActivity"
+            android:label="@string/BaiduMap" />
+
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="zWyNof0YjPg5rjeolCDsaYrSpKIFURkw" />
+            android:value="aWaqVu1aBubvLF6UrFuCRV75DOeCg4sW" />
+        <!--android:value="zWyNof0YjPg5rjeolCDsaYrSpKIFURkw" />//公-->
         <!--定位-->
         <service
             android:name="com.baidu.location.f"
