@@ -136,7 +136,7 @@ public class MapInfoActivity extends BaseToolbarActivity {
         unregisterReceiver(mBroadcastReceiver);
     }
 
-    @OnClick({R.id.tv1, R.id.tv2, R.id.tv3, R.id.tv4, R.id.tv5})
+    @OnClick({R.id.tv1, R.id.tv2, R.id.tv3, R.id.tv4})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv1:
@@ -193,22 +193,13 @@ public class MapInfoActivity extends BaseToolbarActivity {
                                     mRvLocationSQL.setVisibility(View.GONE);
                                 }
 
-                                double distance = LocationUtil.getDistance(36.664673, 117.069187, 36.686626, 117.08093);
-                                LogUtil.e("111111111111", "distance = " + distance);
                                 List<LocationBean2> locationBean2s = LitePal.findAll(LocationBean2.class);
-
                                 for (int i = 0; i < locationBean2s.size(); i++) {
                                     LogUtil.e("22222+++", locationBean2s.get(i).toString());
                                 }
                             }
                         });
                 break;
-            case R.id.tv5:
-                if (BaiduNaviManagerFactory.getBaiduNaviManager().isInited()) {
-                    ToastUtil.show(mContext, "正在算路，请稍等...");
-                    NavigationUtil.routeplanToNavi(mContext, BNRoutePlanNode.CoordinateType.BD09LL, 116, 35, "我的位置", 117, 36, null);
-                    break;
-                }
         }
     }
 

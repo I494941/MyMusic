@@ -1,17 +1,16 @@
 package com.wjf.mymusic.ui.myDemo.baidumap.service;
 
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.app.Service;
+import android.app.*;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-
+import android.support.v4.app.NotificationCompat;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.utils.DistanceUtil;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.sp.SharePreferenceManager;
 import com.wjf.mymusic.ui.myDemo.baidumap.mapInfo.MapInfoActivity;
@@ -29,9 +28,8 @@ public class LocationService extends Service {
     public static boolean isLocating;
     private LocationClient locationClient;
     public static final int NOTICE_ID = 100;
-    protected SharePreferenceManager sp = new SharePreferenceManager(this);
-    private double preLng;   //上次定位 经度
-    private double preLat;   //上次定位 纬度
+    public static final String CHANNEL_ID = "fore_service";
+    private LatLng preLatLng;   //上次定位 经纬度
 
     @Nullable
     @Override
@@ -46,7 +44,6 @@ public class LocationService extends Service {
         locationClient = new LocationClient(this);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
@@ -54,6 +51,11 @@ public class LocationService extends Service {
             isLocating = true;
             initLocation();
             //使用startForeground方法开启前台服务
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "前台服务", NotificationManager.IMPORTANCE_HIGH);
+                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.createNotificationChannel(channel);
+            }
             startForeground(NOTICE_ID, getNotification());
         }
         return super.onStartCommand(intent, flags, startId);
@@ -74,32 +76,33 @@ public class LocationService extends Service {
             LogUtil.e("1111====LocationService====", "location.getLocationDescribe() = " + location.getLocationDescribe());
 
 
-            LogUtil.e("2222====LocationService====", "preLng = " + preLng);
-            LogUtil.e("2222====LocationService====", "preLat = " + preLat);
+            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+
             LogUtil.e("2222====LocationService====", "location.getLongitude() = " + location.getLongitude());
             LogUtil.e("2222====LocationService====", "location.getLatitude() = " + location.getLatitude());
-            LogUtil.e("2222====LocationService====", "LocationUtil.getDistance(location.getLatitude(), location.getLongitude(), preLat, preLng) = " + LocationUtil.getDistance(location.getLatitude(), location.getLongitude(), preLat, preLng));
-
-            if (0 == preLng && 0 == preLat) {
-                //第一次定位,记录地址信息
-                insertLocation(location);
-
-                preLng = location.getLongitude();
-                preLat = location.getLatitude();
-            } else if (LocationUtil.getDistance(location.getLatitude(), location.getLongitude(), preLat, preLng) > 500) {
-                //与上一次有效地址距离大于500米，定位有效
-                insertLocation(location);
-
-                preLng = location.getLongitude();
-                preLat = location.getLatitude();
+            if (preLatLng != null) {
+                LogUtil.e("2222====LocationService====", "preLng = " + preLatLng.longitude);
+                LogUtil.e("2222====LocationService====", "preLat = " + preLatLng.latitude);
+                LogUtil.e("2222====LocationService====", "DistanceUtil.getDistance(location.getLatitude(), location.getLongitude(), preLat, preLng) = " + DistanceUtil.getDistance(preLatLng, latLng));
             }
 
-            insertLocation2(location);
-            sendLocationBroadcast(location);
+
+            insertLocation2(location, preLatLng == null ? 0 : DistanceUtil.getDistance(preLatLng, latLng));
+            sendLocationBroadcast(location, preLatLng == null ? 0 : DistanceUtil.getDistance(preLatLng, latLng));
+            if (preLatLng == null) {
+                //第一次定位
+                insertLocation(location, 0);
+                preLatLng = latLng;
+            } else if (DistanceUtil.getDistance(preLatLng, latLng) > 500) {
+                //与上一次有效地址距离大于500米，定位有效
+                insertLocation(location, DistanceUtil.getDistance(preLatLng, latLng));
+                preLatLng = latLng;
+            }
         });
     }
 
-    private void sendLocationBroadcast(BDLocation location) {
+    private void sendLocationBroadcast(BDLocation location, double distance) {
         Intent intent = new Intent();
         //对应BroadcastReceiver中intentFilter的action
         intent.setAction("get_location");
@@ -108,33 +111,34 @@ public class LocationService extends Service {
         locationBean.setTime(DateUtil.getTime());
         locationBean.setLng(location.getLongitude());
         locationBean.setLat(location.getLatitude());
-        locationBean.setDistance(LocationUtil.getDistance(location.getLatitude(), location.getLongitude(), preLat, preLng));
+        locationBean.setDistance(distance);
 
         intent.putExtra("LocationBean", locationBean);
         //发送广播
         sendBroadcast(intent);
     }
 
-    private void insertLocation(BDLocation location) {
+    private void insertLocation(BDLocation location, double distance) {
         LocationBean locationBean = new LocationBean();
         locationBean.setLng(location.getLongitude());
         locationBean.setLat(location.getLatitude());
         locationBean.setTime(DateUtil.getTime());
+        locationBean.setDistance(distance);
         locationBean.save();
     }
 
-    private void insertLocation2(BDLocation location) {
+    private void insertLocation2(BDLocation location, double distance) {
         LocationBean2 locationBean = new LocationBean2();
         locationBean.setLng(location.getLongitude());
         locationBean.setLat(location.getLatitude());
         locationBean.setTime(DateUtil.getTime());
+        locationBean.setDistance(distance);
         locationBean.save();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private Notification getNotification() {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MapInfoActivity.class), 0);
-        return new Notification.Builder(this)
+        return new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentIntent(pendingIntent)
                 .setContentTitle("设置下拉列表里的标题")
                 .setContentText("设置要显示的内容")

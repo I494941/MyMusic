@@ -16,110 +16,76 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv1"
+                android:id="@+id/tv_baidu_map"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_top_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="开启服务"
+                android:text="@string/BaiduMap"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_default" />
 
             <TextView
-                android:id="@+id/tv2"
+                android:id="@+id/tv_baidu_map_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_no_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="停止服务"
+                android:text="@string/BaiduMapInfo"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_default" />
 
             <TextView
-                android:id="@+id/tv3"
+                android:id="@+id/tv_baidu_map_navi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_no_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="util定位"
+                android:text="@string/BaiduMapNavi"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_default" />
 
             <TextView
-                android:id="@+id/tv4"
+                android:id="@+id/tv_baidu_map_trace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_no_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="获取本地定位数据"
+                android:text="@string/BaiduMapTrace"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_default" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tv_baidu_map_trail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorDividerGray">
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_no_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/BaiduMapTrail"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="时间" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="经度" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="纬度" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="距离" />
-            </LinearLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/tv_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:overScrollMode="never"
-                    android:scrollbars="none" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_location_sql"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:overScrollMode="never"
-                    android:scrollbars="none"
-                    android:visibility="gone" />
-            </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_bottom_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/bottom"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

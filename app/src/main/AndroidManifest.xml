@@ -43,13 +43,6 @@
     <!-- 用于Android M及以上系统，申请加入忽略电池优化白名单-->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
-    <!-- 获取精确gps位置 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <!-- 获取粗略位置 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <!-- 允许程序访问额外的定位提供者指令获取模拟定位信息 -->
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
-
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
@@ -85,15 +78,20 @@
         <activity
             android:name=".ui.myDemo.MyDemosActivity"
             android:label="@string/MyDemo" />
+
         <activity
-            android:name=".ui.myDemo.recyclerViewActivity.Multi.MultiRecyclerViewActivity"
-            android:label="@string/Multi_RecyclerView" />
+            android:name=".ui.myDemo.recyclerViewActivity.RecyclerViewActivity"
+            android:label="@string/RecyclerView" />
         <activity
             android:name=".ui.myDemo.recyclerViewActivity.base.BaseRecyclerViewActivity"
             android:label="@string/Base_RecyclerView" />
         <activity
+            android:name=".ui.myDemo.recyclerViewActivity.Multi.MultiRecyclerViewActivity"
+            android:label="@string/Multi_RecyclerView" />
+        <activity
             android:name=".ui.myDemo.recyclerViewActivity.staggered.StaggeredRecyclerViewActivity"
             android:label="@string/Staggered_RecyclerViewActivity" />
+
         <activity
             android:name=".ui.myDemo.eventbusActivity.EventBusFirstActivity"
             android:label="@string/EventBusFirstActivity" />
@@ -105,6 +103,9 @@
             android:label="@string/EventBusThirdActivity" />
 
         <activity
+            android:name=".ui.myDemo.baidumap.BaiduMapActivity"
+            android:label="@string/BaiduMap" />
+        <activity
             android:name=".ui.myDemo.baidumap.map.MapActivity"
             android:label="@string/BaiduMap" />
 
@@ -115,8 +116,8 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="aWaqVu1aBubvLF6UrFuCRV75DOeCg4sW" />
-        <!--android:value="zWyNof0YjPg5rjeolCDsaYrSpKIFURkw" />//公-->
+            android:value="zWyNof0YjPg5rjeolCDsaYrSpKIFURkw" />//公
+        <!--android:value="aWaqVu1aBubvLF6UrFuCRV75DOeCg4sW" />-->
         <!--定位-->
         <service
             android:name="com.baidu.location.f"
@@ -129,6 +130,12 @@
         <activity
             android:name=".ui.myDemo.baidumap.mapInfo.MapInfoActivity"
             android:label="@string/BaiduMapInfo" />
+        <activity
+            android:name=".ui.myDemo.baidumap.trace.TraceActivity"
+            android:label="@string/BaiduMapTrace" />
+        <activity
+            android:name=".ui.myDemo.baidumap.trail.TrailActivity"
+            android:label="@string/BaiduMapTrail" />
 
     </application>
 

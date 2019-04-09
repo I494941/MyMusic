@@ -33,15 +33,23 @@
     <string name="startSkyGray">星空灰</string>
 
     <string name="MyDemo">MyDemo</string>
+
+    <string name="RecyclerView">RecyclerView</string>
     <string name="Base_RecyclerView">Base_RecyclerView</string>
     <string name="Multi_RecyclerView">多布局</string>
     <string name="Staggered_RecyclerViewActivity">瀑布流</string>
+
     <string name="EventBus">EventBus</string>
     <string name="EventBusFirstActivity">EventBusFirstActivity</string>
     <string name="EventBusSecondActivity">EventBusSecondActivity</string>
     <string name="EventBusThirdActivity">EventBusThirdActivity</string>
+
     <string name="BaiduMap">百度地图</string>
     <string name="BaiduMapInfo">百度地图-获取信息</string>
+    <string name="BaiduMapNavi">百度地图-导航</string>
+    <string name="BaiduMapTrace">百度地图-轨迹(已完成)</string>
+    <string name="BaiduMapTrail">百度地图-轨迹</string>
+
     <string name="bottom">底部</string>
 
 </resources>

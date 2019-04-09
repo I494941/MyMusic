@@ -11,6 +11,7 @@ import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import com.baidu.navisdk.adapter.*;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.util.FileUtil;
 import com.wjf.mymusic.util.LogUtil;
 import com.wjf.mymusic.util.ToastUtil;
@@ -76,8 +77,7 @@ public class NavigationUtil {
     private static void initTTS(Activity activity) {
         // 使用内置TTS
         BaiduNaviManagerFactory.getTTSManager().initTTS(activity.getApplicationContext(),
-                //FileUtil.getImageDir(), "navi", "15878843");//公
-                FileUtil.getImageDir(), "navi", "15951168");
+                FileUtil.getImageDir(), "navi", Constants.TTSAPI);
 
         // 不使用内置TTS
         //         BaiduNaviManagerFactory.getTTSManager().initTTS(mTTSCallback);

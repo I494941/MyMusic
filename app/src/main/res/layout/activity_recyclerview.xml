@@ -16,50 +16,38 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_recyclerview"
+                android:id="@+id/tv_base_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_top_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/RecyclerView"
+                android:text="@string/Base_RecyclerView"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_default" />
 
             <TextView
-                android:id="@+id/tv_eventbus"
+                android:id="@+id/tv_multi_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_no_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/EventBus"
+                android:text="@string/Multi_RecyclerView"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_default" />
 
             <TextView
-                android:id="@+id/tv_baidu_map"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/changeble_no_corner5_bg"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/BaiduMap"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_default" />
-
-            <TextView
-                android:id="@+id/tv_bottom"
+                android:id="@+id/tv_staggered_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_bottom_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/bottom"
+                android:text="@string/Staggered_RecyclerViewActivity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_default" />
         </LinearLayout>
