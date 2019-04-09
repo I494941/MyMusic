@@ -1,18 +1,22 @@
 package com.wjf.mymusic.ui.myDemo.baidumap.service;
 
-import android.app.*;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
+
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.DistanceUtil;
 import com.wjf.mymusic.R;
-import com.wjf.mymusic.sp.SharePreferenceManager;
 import com.wjf.mymusic.ui.myDemo.baidumap.mapInfo.MapInfoActivity;
 import com.wjf.mymusic.ui.myDemo.litepalBean.LocationBean;
 import com.wjf.mymusic.ui.myDemo.litepalBean.LocationBean2;
@@ -30,6 +34,7 @@ public class LocationService extends Service {
     public static final int NOTICE_ID = 100;
     public static final String CHANNEL_ID = "fore_service";
     private LatLng preLatLng;   //上次定位 经纬度
+    private int mSpan = 6000;
 
     @Nullable
     @Override
@@ -62,7 +67,7 @@ public class LocationService extends Service {
     }
 
     private void initLocation() {
-        LocationUtil.getLocationContinue(locationClient, 60000, location -> {
+        LocationUtil.getLocationContinue(locationClient, mSpan, location -> {
 
             LogUtil.e("1111====LocationService====", "location.getLocType() = " + location.getLocType());
             LogUtil.e("1111====LocationService====", "location.getLongitude() = " + location.getLongitude());

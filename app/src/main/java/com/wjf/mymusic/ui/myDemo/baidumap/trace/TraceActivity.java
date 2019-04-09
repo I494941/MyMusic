@@ -15,7 +15,6 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.Polyline;
 import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
@@ -42,6 +41,7 @@ public class TraceActivity extends BaseToolbarActivity {
     private InfoWindow mInfoWindow;  //地图中显示信息窗口
     private BitmapDescriptor startBD;
     private BitmapDescriptor finishBD;
+    private Marker mMarkerA, mMarkerB, mMarker1, mMarker2;
 
     @Override
     protected int getContentViewLayoutID() {
@@ -55,9 +55,9 @@ public class TraceActivity extends BaseToolbarActivity {
         mBaiduMap.setMyLocationEnabled(true);
 
         //获取运动后的定位点
-        initLocation();
-
-        LatLng target = new LatLng(36.686312, 117.081062);
+        initLocations();
+        //TODO  判空
+        LatLng target = latLngs.get(latLngs.size() - 1);
         //设置缩放中点LatLng target，和缩放比例
         MapStatus.Builder builder = new MapStatus.Builder();
         builder.target(target).zoom(18f);
@@ -65,25 +65,38 @@ public class TraceActivity extends BaseToolbarActivity {
         //地图设置缩放状态
         mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
 
-        /**
-         * 配置线段图层参数类： PolylineOptions
-         * ooPolyline.width(13)：线宽
-         * ooPolyline.color(0xAAFF0000)：线条颜色红色
-         * ooPolyline.points(latLngs)：List<LatLng> latLngs位置点，将相邻点与点连成线就成了轨迹了
-         */
-        OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(latLngs);
-
-        //在地图上画出线条图层，mPolyline：线条图层
-        mPolyline = (Polyline) mBaiduMap.addOverlay(ooPolyline);
-        mPolyline.setZIndex(3);
-
-        initTrail();
+        //画点
+        drawPoint();
+        //画线
+        drawLine();
+        //画起点、终点  添加点击事件
+        initStartAndStop();
     }
 
-    private void initLocation() {
+    @Override
+    protected void onResume() {
+        mMapView.onResume();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        mMapView.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mBaiduMap.setMyLocationEnabled(false);
+        mMapView.onDestroy();
+        mMapView = null;
+        startBD.recycle();
+        finishBD.recycle();
+        super.onDestroy();
+    }
+
+    private void initLocations() {
         LatLng latLng = new LatLng(36.686312, 117.081062);
-        latLngs.add(latLng);
-        latLng = new LatLng(36.686312, 117.081062);
         latLngs.add(latLng);
         latLng = new LatLng(36.685652, 117.074087);
         latLngs.add(latLng);
@@ -105,13 +118,94 @@ public class TraceActivity extends BaseToolbarActivity {
         latLngs.add(latLng);
     }
 
-    private void initTrail() {
+    private void drawPoint() {
+        /**
+         * 绘制Marker，地图上常见的类似气球形状的图层
+         */
+
+        LatLng latLng = new LatLng(36.686312, 117.079667);
+        MarkerOptions markerOptions = new MarkerOptions();//参数设置类
+        markerOptions.position(latLng);//marker坐标位置
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.position));//marker图标，可以自定义
+        markerOptions.draggable(false);//是否可拖拽，默认不可拖拽
+        markerOptions.anchor(0.5f, 1.0f);//设置 marker覆盖物与位置点的位置关系，默认（0.5f, 1.0f）水平居中，垂直下对齐
+        markerOptions.alpha(0.8f);//marker图标透明度，0~1.0，默认为1.0
+        markerOptions.animateType(MarkerOptions.MarkerAnimateType.drop);//marker出现的方式，从天上掉下
+        markerOptions.flat(false);//marker突变是否平贴地面
+        markerOptions.zIndex(1);//index
+
+        ////Marker动画效果
+        //markerOptions.icons(bitmapList);//如果需要显示动画，可以设置多张图片轮番显示
+        //markerOptions.period(10);//每个10ms显示bitmapList里面的图片
+
+        mMarker1 = (Marker) mBaiduMap.addOverlay(markerOptions);//在地图上增加mMarker图层
+
+        MarkerOptions markerOptions2 = new MarkerOptions();//参数设置类
+        markerOptions2.position(latLngs.get(latLngs.size() - 1));//marker坐标位置
+        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.position));//marker图标，可以自定义
+        markerOptions2.draggable(false);//是否可拖拽，默认不可拖拽
+        markerOptions2.anchor(0.5f, 1.0f);//设置 marker覆盖物与位置点的位置关系，默认（0.5f, 1.0f）水平居中，垂直下对齐
+        markerOptions2.alpha(0.8f);//marker图标透明度，0~1.0，默认为1.0
+        markerOptions2.animateType(MarkerOptions.MarkerAnimateType.drop);//marker出现的方式，从天上掉下
+        markerOptions2.flat(false);//marker突变是否平贴地面
+        markerOptions2.zIndex(1);//index
+
+        ////Marker动画效果
+        //markerOptions.icons(bitmapList);//如果需要显示动画，可以设置多张图片轮番显示
+        //markerOptions.period(10);//每个10ms显示bitmapList里面的图片
+
+        mMarker2 = (Marker) mBaiduMap.addOverlay(markerOptions2);//在地图上增加mMarker图层
+    }
+
+    private void drawLine() {
+        /**
+         * 绘制折线
+         */
+        PolylineOptions polylineOptions = new PolylineOptions();//参数设置类
+        polylineOptions.width(10);//宽度,单位：像素
+        polylineOptions.color(0xAAFF0000);//设置折线颜色
+        polylineOptions.points(latLngs);//折线顶点坐标集
+
+        /**
+         * colorValue：List<Integer>，折线颜色集合
+         * 如果这里设置了折现颜色集合，那么options.color()中设置的颜色会被覆盖
+         * 例：5个点能画出4条线段，每条线段绘制时按照索引依次取值，
+         如果颜色个数小于线段个数，剩余线段取最后一个颜色绘制
+         */
+        //polylineOptions.colorsValues(colorValue);
+        polylineOptions.dottedLine(false);//是否是虚线，默认为false
+        polylineOptions.zIndex(9);//index
+        polylineOptions.visible(true);//是否可见，默认可见
+        //polylineOptions.extraInfo(bundle);//附加bundle
+
+
+        /**
+         * 设置线段纹理样式，所以折线纹理样式是可以自己定义的
+         * textureList:折现纹理样式集合
+         * textureIndexs:折线纹理索引，绘制时按照索引从textureList里面取样式，
+         如下面代码中，0和1就是textureList的索引，这样就会先取a再取b，
+         如果textureIndexs.add(1)然后再textureIndexs.add(0)就先取b再取a了，
+         所以textureIndexs里面的值不能乱加，应该是小于等于textureList个数的值，不然就出错了。
+         */
+        //List<BitmapDescriptor> textureList = new ArrayList<BitmapDescriptor>();
+        //textureList.add(BitmapDescriptorFactory.fromResource(R.drawable.a));
+        //textureList.add(BitmapDescriptorFactory.fromResource(R.drawable.b));
+        //polylineOptions.customTextureList(textureList);//设置折现纹理样式
+        //List<Integer> textureIndexs = new ArrayList<Integer>();
+        //textureIndexs.add(0);
+        //textureIndexs.add(1);
+        //polylineOptions.textureIndex(textureIndexs);
+
+        mPolyline = (Polyline) mBaiduMap.addOverlay(polylineOptions);//在地图上增加mPolyline图层
+    }
+
+    private void initStartAndStop() {
         //始点图层图标
         startBD = BitmapDescriptorFactory
-                .fromResource(R.drawable.startpoint);
+                .fromResource(R.drawable.start_point);
         //终点图层图标
         finishBD = BitmapDescriptorFactory
-                .fromResource(R.drawable.finishpoint);
+                .fromResource(R.drawable.stop_point);
 
 
         MarkerOptions oStart = new MarkerOptions();//地图标记类型的图层参数配置类
@@ -119,11 +213,11 @@ public class TraceActivity extends BaseToolbarActivity {
         oStart.icon(startBD);//设置图层图片
         oStart.zIndex(1);//设置图层Index
         //添加起点图层
-        Marker mMarkerA = (Marker) (mBaiduMap.addOverlay(oStart));
+        mMarkerA = (Marker) (mBaiduMap.addOverlay(oStart));
 
         //添加终点图层
         MarkerOptions oFinish = new MarkerOptions().position(latLngs.get(latLngs.size() - 1)).icon(finishBD).zIndex(2);
-        Marker mMarkerB = (Marker) (mBaiduMap.addOverlay(oFinish));
+        mMarkerB = (Marker) (mBaiduMap.addOverlay(oFinish));
 
         //设置图层点击监听回调
         mBaiduMap.setOnMarkerClickListener(marker -> {
@@ -180,27 +274,5 @@ public class TraceActivity extends BaseToolbarActivity {
             }
             return false;
         });
-    }
-
-    @Override
-    protected void onResume() {
-        mMapView.onResume();
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        mMapView.onPause();
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        mBaiduMap.setMyLocationEnabled(false);
-        mMapView.onDestroy();
-        mMapView = null;
-        startBD.recycle();
-        finishBD.recycle();
-        super.onDestroy();
     }
 }
