@@ -1,8 +1,8 @@
 package com.wjf.mymusic.ui.myDemo.recyclerViewActivity.staggered;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -43,6 +43,7 @@ public class StaggeredRecyclerViewActivity extends BaseToolbarActivity implement
             "http://cn.bing.com/th?id=OHR.GTNPBeaver_ZH-CN3940626643_1920x1080.jpg&rf=LaDigue_1920x1081920x1080.jpg",
             "http://cn.bing.com/th?id=OHR.WallaceMonument_ZH-CN4008495741_1920x1080.jpg&rf=LaDigue_1920x1081920x1080.jpg",
             "http://cn.bing.com/th?id=OHR.BlueTide_ZH-CN4055424992_1920x1080.jpg&rf=LaDigue_1920x1081920x1080.jpg",
+            "http://cn.bing.com/th?id=OHR.SibWrestling_ZH-CN4106007210_1920x1080.jpg&rf=LaDigue_1920x1081920x1080.jpg",
             "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1240426408,3396216424&fm=27&gp=0.jpg",
             "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1765208127,2618259413&fm=27&gp=0.jpg",
             "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1447507835,3654535229&fm=27&gp=0.jpg",

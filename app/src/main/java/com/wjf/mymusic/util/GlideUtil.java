@@ -31,7 +31,7 @@ public class GlideUtil {
 
     public static void setCircleImage(Context context, String url, ImageView iv) {
         RequestOptions options = new RequestOptions()
-                .transform(new GlideCircleTransform(context))
+                .transform(new GlideCircleTransform())
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE);
         Glide.with(context)
@@ -42,7 +42,7 @@ public class GlideUtil {
 
     public static void setCircleImage(Context context, String url, ImageView iv, int drawable) {
         RequestOptions options = new RequestOptions()
-                .transform(new GlideCircleTransform(context))
+                .transform(new GlideCircleTransform())
                 .placeholder(drawable)
                 .error(drawable);
         Glide.with(context)
@@ -53,7 +53,7 @@ public class GlideUtil {
 
     public static void setCircleImage(Context context, Bitmap bm, ImageView iv, int drawable) {
         RequestOptions options = new RequestOptions()
-                .transform(new GlideCircleTransform(context))
+                .transform(new GlideCircleTransform())
                 .placeholder(drawable)
                 .error(drawable);
         Glide.with(context)

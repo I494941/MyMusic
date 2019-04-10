@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.baidu.navisdk.adapter.*;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.wjf.mymusic.constants.Constants;

@@ -5,26 +5,14 @@ import android.view.Gravity;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.BitmapDescriptor;
-import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.map.InfoWindow;
-import com.baidu.mapapi.map.MapStatus;
-import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.Marker;
-import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.Polyline;
-import com.baidu.mapapi.map.PolylineOptions;
+import butterknife.BindView;
+import com.baidu.mapapi.map.*;
 import com.baidu.mapapi.model.LatLng;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * Created by wjf on 2019/4/8.
@@ -35,12 +23,11 @@ public class TraceActivity extends BaseToolbarActivity {
     MapView mMapView;
 
     private BaiduMap mBaiduMap;
-    private Polyline mPolyline;
     private List<LatLng> latLngs = new ArrayList();
 
     private InfoWindow mInfoWindow;  //地图中显示信息窗口
-    private BitmapDescriptor startBD;
-    private BitmapDescriptor finishBD;
+    private BitmapDescriptor startBD, finishBD;
+    private Polyline mPolyline;
     private Marker mMarkerA, mMarkerB, mMarker1, mMarker2;
 
     @Override

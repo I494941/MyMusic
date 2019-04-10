@@ -51,5 +51,7 @@
     <string name="BaiduMapTrail">百度地图-轨迹</string>
 
     <string name="bottom">底部</string>
+    <string name="stop">结束</string>
+    <string name="clear">清空</string>
 
 </resources>

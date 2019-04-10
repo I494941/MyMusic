@@ -1,12 +1,12 @@
 package com.wjf.mymusic;
 
-import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,37 +84,34 @@ public class MainActivity extends BaseAppCompatActivity {
         View headerView = mNavView.getHeaderView(0);
         mNavHeadIv = headerView.findViewById(R.id.nav_head_bg_iv);
         Glide.with(MainActivity.this).load(sp.getString(Constants.BING_URL)).into(mNavHeadIv);
-        mNavView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                mDrawerLayout.closeDrawers();
-                switch (item.getItemId()) {
-                    case R.id.nav_theme:
-                        startActivity(ThemeActivity.class);
-                        finish();
-                        break;
-                    case R.id.nav_night_mode:
-                        if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1) {
-                            //当前为夜间模式，则恢复之前的主题
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                            sp.putInt(Constants.THEME_SELECT, sp.getInt(Constants.PRE_THEME_SELECT));
-                        } else {
-                            //当前为白天模式，则切换到夜间模式
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                            sp.putInt(Constants.PRE_THEME_SELECT, sp.getInt(Constants.THEME_SELECT));
-                            sp.putInt(Constants.THEME_SELECT, Constants.THEME_SIZE - 1);
-                        }
-                        recreate();
-                        break;
-                    case R.id.nav_about_me:
-                        startActivity(AboutActivity.class);
-                        break;
-                    case R.id.nav_quit:
-                        finish();
-                        break;
-                }
-                return true;
+        mNavView.setNavigationItemSelectedListener(item -> {
+            mDrawerLayout.closeDrawers();
+            switch (item.getItemId()) {
+                case R.id.nav_theme:
+                    startActivity(ThemeActivity.class);
+                    finish();
+                    break;
+                case R.id.nav_night_mode:
+                    if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1) {
+                        //当前为夜间模式，则恢复之前的主题
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        sp.putInt(Constants.THEME_SELECT, sp.getInt(Constants.PRE_THEME_SELECT));
+                    } else {
+                        //当前为白天模式，则切换到夜间模式
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        sp.putInt(Constants.PRE_THEME_SELECT, sp.getInt(Constants.THEME_SELECT));
+                        sp.putInt(Constants.THEME_SELECT, Constants.THEME_SIZE - 1);
+                    }
+                    recreate();
+                    break;
+                case R.id.nav_about_me:
+                    startActivity(AboutActivity.class);
+                    break;
+                case R.id.nav_quit:
+                    finish();
+                    break;
             }
+            return true;
         });
     }
 

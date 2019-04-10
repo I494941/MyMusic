@@ -3,7 +3,7 @@ package com.wjf.mymusic.ui.myDemo.baidumap.navi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import com.baidu.navisdk.adapter.BNRoutePlanNode;

@@ -49,6 +49,7 @@
         <item name="image_tint">@color/biliPink</item>
         <item name="press_color">@color/biliPink50</item>
     </style>
+
     <style name="KuAnGreenTheme" parent="AppTheme">
         <item name="colorPrimary">@color/kuanGreen</item>
         <item name="colorPrimaryDark">@color/kuanGreen</item>
@@ -56,6 +57,7 @@
         <item name="image_tint">@color/kuanGreen</item>
         <item name="press_color">@color/kuanGreen50</item>
     </style>
+
     <style name="ZhiHuBlueTheme" parent="AppTheme">
         <item name="colorPrimary">@color/zhihuBlue</item>
         <item name="colorPrimaryDark">@color/zhihuBlue</item>
@@ -63,6 +65,7 @@
         <item name="image_tint">@color/zhihuBlue</item>
         <item name="press_color">@color/zhihuBlue50</item>
     </style>
+
     <style name="CloudRedTheme" parent="AppTheme">
         <item name="colorPrimary">@color/cloudRed</item>
         <item name="colorPrimaryDark">@color/cloudRed</item>
@@ -70,6 +73,7 @@
         <item name="image_tint">@color/cloudRed</item>
         <item name="press_color">@color/cloudRed50</item>
     </style>
+
     <style name="TengLuoPurpleTheme" parent="AppTheme">
         <item name="colorPrimary">@color/tengluoPurple</item>
         <item name="colorPrimaryDark">@color/tengluoPurple</item>
@@ -77,6 +81,7 @@
         <item name="image_tint">@color/tengluoPurple</item>
         <item name="press_color">@color/tengluoPurple50</item>
     </style>
+
     <style name="SeaBlueTheme" parent="AppTheme">
         <item name="colorPrimary">@color/seaBlue</item>
         <item name="colorPrimaryDark">@color/seaBlue</item>
@@ -84,6 +89,7 @@
         <item name="image_tint">@color/seaBlue</item>
         <item name="press_color">@color/seaBlue50</item>
     </style>
+
     <style name="GrassGreenTheme" parent="AppTheme">
         <item name="colorPrimary">@color/grassGreen</item>
         <item name="colorPrimaryDark">@color/grassGreen</item>
@@ -91,6 +97,7 @@
         <item name="image_tint">@color/grassGreen</item>
         <item name="press_color">@color/grassGreen50</item>
     </style>
+
     <style name="CoffeeBrownTheme" parent="AppTheme">
         <item name="colorPrimary">@color/coffeeBrown</item>
         <item name="colorPrimaryDark">@color/coffeeBrown</item>
@@ -98,6 +105,7 @@
         <item name="image_tint">@color/coffeeBrown</item>
         <item name="press_color">@color/coffeeBrown50</item>
     </style>
+
     <style name="LemonOrangeTheme" parent="AppTheme">
         <item name="colorPrimary">@color/lemonOrange</item>
         <item name="colorPrimaryDark">@color/lemonOrange</item>
@@ -105,6 +113,7 @@
         <item name="image_tint">@color/lemonOrange</item>
         <item name="press_color">@color/lemonOrange50</item>
     </style>
+
     <style name="StartSkyGrayTheme" parent="AppTheme">
         <item name="colorPrimary">@color/startSkyGray</item>
         <item name="colorPrimaryDark">@color/startSkyGray</item>
@@ -133,8 +142,7 @@
         <item name="alertDialogTheme">@style/Theme.AppCompat.Light.Dialog.Alert.Self</item>
     </style>
 
-    <style name="Theme.AppCompat.Light.Dialog.Alert.Self"
-           parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+    <style name="Theme.AppCompat.Light.Dialog.Alert.Self" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:background">@color/nightBg</item>
         <item name="colorAccent">@android:color/white</item>
     </style>

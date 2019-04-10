@@ -1,9 +1,7 @@
 package com.wjf.mymusic.ui.myDemo.baidumap.map;
 
-
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
@@ -34,7 +32,6 @@ public class MapActivity extends BaseToolbarActivity {
 
     @Override
     protected void initViewsAndEvents() {
-
         mBaiduMap = mMapView.getMap();
         ////普通地图 ,mBaiduMap是地图控制器对象
         //mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);

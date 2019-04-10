@@ -1,16 +1,15 @@
 package com.wjf.mymusic.base;
 
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.util.ScreenUtil;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by ws on 2017/10/26 0026.
@@ -20,12 +19,16 @@ public abstract class BaseToolbarActivity extends BaseAppCompatActivity {
 
     protected Toolbar mToolbar;
     protected View mStatusView;
+    protected TextView mTvRight;
+    protected ImageView mIvMore;
 
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-        mToolbar = ButterKnife.findById(this, R.id.toolbar);
-        mStatusView = ButterKnife.findById(this, R.id.statusView);
+        mToolbar = findViewById(R.id.toolbar);
+        mStatusView = findViewById(R.id.statusView);
+        mTvRight = findViewById(R.id.tv_right);
+        mIvMore = findViewById(R.id.iv_more);
 
         initStatusBar();
         initToolbar();
