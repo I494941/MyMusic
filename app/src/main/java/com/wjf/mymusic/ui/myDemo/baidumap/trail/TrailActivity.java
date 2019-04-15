@@ -1,11 +1,22 @@
 package com.wjf.mymusic.ui.myDemo.baidumap.trail;
 
+import android.view.Gravity;
 import android.view.View;
-import butterknife.BindView;
-import butterknife.OnClick;
+
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
-import com.baidu.mapapi.map.*;
+import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
+import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.MyLocationConfiguration;
+import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.Polyline;
+import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.DistanceUtil;
 import com.wjf.mymusic.R;
@@ -14,6 +25,11 @@ import com.wjf.mymusic.util.LocationUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import razerdp.basepopup.QuickPopupBuilder;
+import razerdp.basepopup.QuickPopupConfig;
 
 /**
  * Created by wjf on 2019/4/8.
@@ -26,7 +42,7 @@ public class TrailActivity extends BaseToolbarActivity {
     private BaiduMap mBaiduMap;
     private LocationClient mLocationClient;
     private float mCurrentZoom;
-    private int mSpan = 3000;
+    private int mSpan = 1000;
     private boolean mIsFirstLoc = true;
 
     private LatLng mLast;
@@ -82,35 +98,41 @@ public class TrailActivity extends BaseToolbarActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_more:
-
+                QuickPopupBuilder.with(mContext)
+                        .contentView(R.layout.popup_trail_popup)
+                        .config(new QuickPopupConfig()
+                                .gravity(Gravity.BOTTOM)
+                                .withClick(R.id.tv1, v -> showShortToast("stop"))
+                                .withClick(R.id.tv2, v -> showShortToast("clear")))
+                        .show(mIvMore);
                 break;
         }
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.item1:
-//                if (mLocationClient != null && mLocationClient.isStarted()) {
-//                    mLocationClient.stop();//停止定位
-//                    if (mLatLngs.size() > 0) {
-//                        drawPoint(false);
-//                    }
-//                }
-//                break;
-//            case R.id.item2:
-//                mLocationClient.stop();
-//                mLatLngs.clear();
-//                mMapView.getMap().clear();
-//                mIsFirstLoc = false;
-//                mLast = null;
-//                mLocationClient.start();
-//                break;
-//            default:
-//                break;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+    //    @Override
+    //    public boolean onOptionsItemSelected(MenuItem item) {
+    //        switch (item.getItemId()) {
+    //            case R.id.item1:
+    //                if (mLocationClient != null && mLocationClient.isStarted()) {
+    //                    mLocationClient.stop();//停止定位
+    //                    if (mLatLngs.size() > 0) {
+    //                        drawPoint(false);
+    //                    }
+    //                }
+    //                break;
+    //            case R.id.item2:
+    //                mLocationClient.stop();
+    //                mLatLngs.clear();
+    //                mMapView.getMap().clear();
+    //                mIsFirstLoc = false;
+    //                mLast = null;
+    //                mLocationClient.start();
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //        return super.onOptionsItemSelected(item);
+    //    }
 
     private void initMapStatusChangeListener() {
         /**添加地图缩放状态变化监听，当手动放大或缩小地图时，拿到缩放后的比例，然后获取到下次定位，

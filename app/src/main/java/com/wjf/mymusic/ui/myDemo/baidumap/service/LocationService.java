@@ -1,17 +1,12 @@
 package com.wjf.mymusic.ui.myDemo.baidumap.service;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.Service;
+import android.app.*;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.model.LatLng;
@@ -31,10 +26,10 @@ public class LocationService extends Service {
 
     public static boolean isLocating;
     private LocationClient locationClient;
-    public static final int NOTICE_ID = 100;
+    public static final int NOTICE_ID = 1000;
     public static final String CHANNEL_ID = "fore_service";
     private LatLng preLatLng;   //上次定位 经纬度
-    private int mSpan = 6000;
+    private int mSpan = 60000;
 
     @Nullable
     @Override
@@ -63,6 +58,7 @@ public class LocationService extends Service {
             }
             startForeground(NOTICE_ID, getNotification());
         }
+        flags = START_REDELIVER_INTENT;
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -80,9 +76,7 @@ public class LocationService extends Service {
             LogUtil.e("1111====LocationService====", "location.getStreet() = " + location.getStreet());
             LogUtil.e("1111====LocationService====", "location.getLocationDescribe() = " + location.getLocationDescribe());
 
-
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-
 
             LogUtil.e("2222====LocationService====", "location.getLongitude() = " + location.getLongitude());
             LogUtil.e("2222====LocationService====", "location.getLatitude() = " + location.getLatitude());
@@ -91,7 +85,6 @@ public class LocationService extends Service {
                 LogUtil.e("2222====LocationService====", "preLat = " + preLatLng.latitude);
                 LogUtil.e("2222====LocationService====", "DistanceUtil.getDistance(location.getLatitude(), location.getLongitude(), preLat, preLng) = " + DistanceUtil.getDistance(preLatLng, latLng));
             }
-
 
             insertLocation2(location, preLatLng == null ? 0 : DistanceUtil.getDistance(preLatLng, latLng));
             sendLocationBroadcast(location, preLatLng == null ? 0 : DistanceUtil.getDistance(preLatLng, latLng));
@@ -144,6 +137,7 @@ public class LocationService extends Service {
     private Notification getNotification() {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MapInfoActivity.class), 0);
         return new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setPriority(Notification.PRIORITY_MAX)
                 .setContentIntent(pendingIntent)
                 .setContentTitle("设置下拉列表里的标题")
                 .setContentText("设置要显示的内容")

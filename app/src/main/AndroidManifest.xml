@@ -125,7 +125,8 @@
             android:process=":remote" />
 
         <!--服务：获取定位信息-->
-        <service android:name=".ui.myDemo.baidumap.service.LocationService" />
+        <service android:name=".ui.myDemo.baidumap.service.LocationService"
+                 android:priority="1000" />
 
         <activity
             android:name=".ui.myDemo.baidumap.mapInfo.MapInfoActivity"
