@@ -30,6 +30,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <!--程序在手机屏幕关闭后后台进程仍然运行-->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DEVICE_POWER" tools:ignore="ProtectedPermissions"/>
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
@@ -137,7 +138,5 @@
         <activity
             android:name=".ui.myDemo.baidumap.trail.TrailActivity"
             android:label="@string/BaiduMapTrail" />
-
     </application>
-
 </manifest>

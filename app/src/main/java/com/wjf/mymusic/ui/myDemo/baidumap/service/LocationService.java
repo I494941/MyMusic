@@ -1,10 +1,12 @@
 package com.wjf.mymusic.ui.myDemo.baidumap.service;
 
 import android.app.*;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.PowerManager;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import com.baidu.location.BDLocation;
@@ -30,6 +32,7 @@ public class LocationService extends Service {
     public static final String CHANNEL_ID = "fore_service";
     private LatLng preLatLng;   //上次定位 经纬度
     private int mSpan = 60000;
+    private PowerManager.WakeLock wakeLock;
 
     @Nullable
     @Override
@@ -42,6 +45,11 @@ public class LocationService extends Service {
         super.onCreate();
         isLocating = false;
         locationClient = new LocationClient(this);
+
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, LocationService.class.getName());
+        if (null != wakeLock)
+            wakeLock.acquire();
     }
 
     @Override
@@ -103,7 +111,7 @@ public class LocationService extends Service {
     private void sendLocationBroadcast(BDLocation location, double distance) {
         Intent intent = new Intent();
         //对应BroadcastReceiver中intentFilter的action
-        intent.setAction("get_location");
+        intent.setAction("get_location_my");
 
         LocationBean locationBean = new LocationBean();
         locationBean.setTime(DateUtil.getTime());
@@ -154,6 +162,10 @@ public class LocationService extends Service {
         stopForeground(true);
         locationClient.stop();
         isLocating = false;
+        if (wakeLock != null) {
+            wakeLock.release();
+            wakeLock = null;
+        }
         super.onDestroy();
     }
 }
