@@ -83,4 +83,8 @@ dependencies {
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     /*PopupWindow*/
     implementation 'com.github.razerdp:BasePopup:2.1.9'
+    /*WorkManager*/
+    implementation "android.arch.work:work-runtime:1.0.0-alpha09"
+    implementation "android.arch.work:work-firebase:1.0.0-alpha09"
+
 }
