@@ -50,6 +50,11 @@
     <string name="BaiduMapTrace">百度地图-轨迹(已完成)</string>
     <string name="BaiduMapTrail">百度地图-轨迹</string>
 
+    <string name="BasePopup">BasePopup</string>
+    <string name="QuickPopupBuilder">QuickPopupBuilder</string>
+
+    <string name="WorkManager">WorkManager</string>
+
     <string name="bottom">底部</string>
     <string name="stop">结束</string>
     <string name="clear">清空</string>

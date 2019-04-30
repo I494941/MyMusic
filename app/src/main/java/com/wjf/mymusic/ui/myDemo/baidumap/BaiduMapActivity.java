@@ -2,6 +2,7 @@ package com.wjf.mymusic.ui.myDemo.baidumap;
 
 import android.Manifest;
 import android.view.View;
+import android.widget.TextView;
 
 import com.baidu.navisdk.adapter.BNRoutePlanNode;
 import com.baidu.navisdk.adapter.BaiduNaviManagerFactory;
@@ -15,6 +16,7 @@ import com.wjf.mymusic.ui.myDemo.baidumap.trace.TraceActivity;
 import com.wjf.mymusic.ui.myDemo.baidumap.trail.TrailActivity;
 import com.wjf.mymusic.util.ToastUtil;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -22,22 +24,41 @@ import butterknife.OnClick;
  */
 public class BaiduMapActivity extends BaseToolbarActivity {
 
+    @BindView(R.id.tv1)
+    TextView mTv1;
+    @BindView(R.id.tv3)
+    TextView mTv3;
+    @BindView(R.id.tv4)
+    TextView mTv4;
+    @BindView(R.id.tv5)
+    TextView mTv5;
+    @BindView(R.id.tv2)
+    TextView mTv2;
+
     final RxPermissions rxPermissions = new RxPermissions(this);
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.activity_baidu_map;
+        return R.layout.activity_mydemo;
     }
 
     @Override
     protected void initViewsAndEvents() {
 
+        mTv1.setText(R.string.BaiduMap);
+        mTv3.setText(R.string.BaiduMapInfo);
+        mTv3.setVisibility(View.VISIBLE);
+        mTv4.setText(R.string.BaiduMapNavi);
+        mTv4.setVisibility(View.VISIBLE);
+        mTv5.setText(R.string.BaiduMapTrace);
+        mTv5.setVisibility(View.VISIBLE);
+        mTv2.setText(R.string.BaiduMapTrail);
     }
 
-    @OnClick({R.id.tv_baidu_map, R.id.tv_baidu_map_info, R.id.tv_baidu_map_navi, R.id.tv_baidu_map_trace, R.id.tv_baidu_map_trail})
+    @OnClick({R.id.tv1, R.id.tv3, R.id.tv4, R.id.tv5,  R.id.tv2})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_baidu_map:
+            case R.id.tv1:
                 rxPermissions
                         .request(Manifest.permission.ACCESS_FINE_LOCATION,
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -49,10 +70,10 @@ public class BaiduMapActivity extends BaseToolbarActivity {
                             }
                         });
                 break;
-            case R.id.tv_baidu_map_info:
+            case R.id.tv3:
                 startActivity(MapInfoActivity.class);
                 break;
-            case R.id.tv_baidu_map_navi:
+            case R.id.tv4:
                 rxPermissions
                         .request(Manifest.permission.ACCESS_FINE_LOCATION)
                         .subscribe(granted -> {
@@ -66,7 +87,7 @@ public class BaiduMapActivity extends BaseToolbarActivity {
                             }
                         });
                 break;
-            case R.id.tv_baidu_map_trace:
+            case R.id.tv5:
                 rxPermissions
                         .request(Manifest.permission.ACCESS_FINE_LOCATION)
                         .subscribe(granted -> {
@@ -76,7 +97,7 @@ public class BaiduMapActivity extends BaseToolbarActivity {
                             }
                         });
                 break;
-            case R.id.tv_baidu_map_trail:
+            case R.id.tv2:
                 rxPermissions
                         .request(Manifest.permission.ACCESS_FINE_LOCATION,
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE,

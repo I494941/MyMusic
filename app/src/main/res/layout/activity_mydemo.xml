@@ -16,50 +16,72 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_recyclerview"
+                android:id="@+id/tv1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_top_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/RecyclerView"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_default" />
 
             <TextView
-                android:id="@+id/tv_eventbus"
+                android:id="@+id/tv3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_no_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/EventBus"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_default" />
+                android:textSize="@dimen/text_size_default"
+                android:visibility="gone" />
 
             <TextView
-                android:id="@+id/tv_baidu_map"
+                android:id="@+id/tv4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_no_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/BaiduMap"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_default" />
+                android:textSize="@dimen/text_size_default"
+                android:visibility="gone" />
 
             <TextView
-                android:id="@+id/tv_bottom"
+                android:id="@+id/tv5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_no_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/changeble_no_corner5_bg"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_default"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/changeble_bottom_corner5_bg"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/bottom"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_default" />
         </LinearLayout>
