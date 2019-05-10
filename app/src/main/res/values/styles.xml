@@ -28,7 +28,6 @@
         <item name="android:activityCloseExitAnimation">@anim/act_slide_right_out</item>
     </style>
 
-
     <style name="ProgressDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -40,7 +39,6 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
-
 
     <style name="BiLiPinkTheme" parent="AppTheme">
         <item name="colorPrimary">@color/biliPink</item>
@@ -121,7 +119,7 @@
         <item name="image_tint">@color/startSkyGray</item>
         <item name="press_color">@color/startSkyGray50</item>
     </style>
-    <!--<style name="NightModeTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+
     <style name="NightModeTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/nightActionbar</item>
         <item name="colorPrimaryDark">@color/nightActionbar</item>
@@ -130,7 +128,6 @@
         <item name="appbg">@color/nightBg</item>
         <item name="divider">@color/nightActionbar</item>
         <item name="press_color">@color/biliPink50</item>
-        <!--<item name="my_selector_layout">@drawable/selector_layout</item>-->
         <item name="play_bar_color">@color/nightActionbar</item>
         <item name="android:textColor">@color/white</item>
         <item name="text_color">@color/white</item>

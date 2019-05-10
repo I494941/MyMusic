@@ -1,12 +1,7 @@
 package com.wjf.mymusic.ui.themeActivity;
 
 import android.os.Build;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
-import butterknife.BindView;
-import com.chad.library.adapter.base.BaseQuickAdapter;
+
 import com.wjf.mymusic.MainActivity;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
@@ -17,6 +12,11 @@ import com.wjf.mymusic.ui.themeActivity.bean.ThemeInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 
 /**
  * Created by wjf on 2019/1/17.
@@ -69,30 +69,27 @@ public class ThemeActivity extends BaseToolbarActivity {
         mRv.setNestedScrollingEnabled(false);
         mAdapter = new ThemeAdapter(R.layout.item_theme, mList, selectTheme);
         mRv.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        mAdapter.setOnItemClickListener((adapter, view, position) -> {
 
-                selectTheme = position;
-                sp.putInt(Constants.THEME_SELECT, position);
-                mToolbar.setBackgroundColor(getResources().getColor(mList.get(position).getColor()));
-                mRv.setBackgroundColor(getResources().getColor(mList.get(position).getBackground()));
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                    getWindow().setStatusBarColor(getResources().getColor(mList.get(position).getColor()));
+            selectTheme = position;
+            sp.putInt(Constants.THEME_SELECT, position);
+            mToolbar.setBackgroundColor(getResources().getColor(mList.get(position).getColor()));
+            mRv.setBackgroundColor(getResources().getColor(mList.get(position).getBackground()));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                getWindow().setStatusBarColor(getResources().getColor(mList.get(position).getColor()));
 
-                if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1)
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            if (sp.getInt(Constants.THEME_SELECT) == Constants.THEME_SIZE - 1)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            else
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+            for (int i = 0; i < mList.size(); i++) {
+                if (i == position)
+                    mList.get(i).setSelect(true);
                 else
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
-                for (int i = 0; i < mList.size(); i++) {
-                    if (i == position)
-                        mList.get(i).setSelect(true);
-                    else
-                        mList.get(i).setSelect(false);
-                }
-                mAdapter.setSelectTheme(selectTheme);
+                    mList.get(i).setSelect(false);
             }
+            mAdapter.setSelectTheme(selectTheme);
         });
     }
 
