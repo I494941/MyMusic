@@ -21,18 +21,20 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.wjf.mymusic.R;
 import com.wjf.mymusic.constants.Constants;
 import com.wjf.mymusic.sp.SharePreferenceManager;
 import com.wjf.mymusic.util.ToastUtil;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public abstract class BaseAppCompatActivity extends AppCompatActivity {
 
@@ -44,18 +46,15 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContext = this;
-        setTranslucentStatus();
-
         initTheme();
+        setTranslucentStatus();
+        mContext = this;
         BaseAppManager.getInstance().addActivity(this);
-
         if (getContentViewLayoutID() != 0) {
             setContentView(getContentViewLayoutID());
         } else {
             throw new IllegalArgumentException("You must return a right contentView layout resource Id");
         }
-
         initViewsAndEvents();
     }
 

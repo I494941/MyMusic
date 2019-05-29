@@ -66,6 +66,7 @@ public class ThemeActivity extends BaseToolbarActivity {
 
     private void initRecyclerview() {
         mRv.setLayoutManager(new LinearLayoutManager(this));
+        mRv.setFocusable(false);
         mRv.setNestedScrollingEnabled(false);
         mAdapter = new ThemeAdapter(R.layout.item_theme, mList, selectTheme);
         mRv.setAdapter(mAdapter);

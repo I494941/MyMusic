@@ -76,7 +76,6 @@
             android:name=".ui.about.AboutActivity"
             android:label="@string/about" />
 
-
         <!--我的-->
         <activity
             android:name=".ui.myDemo.MyDemosActivity"
@@ -148,5 +147,12 @@
         <activity
             android:name=".ui.myDemo.basepopup.quickpopupbuilder.QuickPopupBuilderActivity"
             android:label="@string/QuickPopupBuilder" />
+
+        <activity
+            android:name=".ui.myDemo.parcelable.ParcelableActivity"
+            android:label="@string/Parcelable" />
+        <activity
+            android:name=".ui.myDemo.parcelable.ParcelableActivity2"
+            android:label="@string/Parcelable" />
     </application>
 </manifest>

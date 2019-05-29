@@ -53,6 +53,8 @@
     <string name="BasePopup">BasePopup</string>
     <string name="QuickPopupBuilder">QuickPopupBuilder</string>
 
+    <string name="Parcelable">Parcelable</string>
+
     <string name="WorkManager">WorkManager</string>
 
     <string name="bottom">底部</string>

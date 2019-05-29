@@ -8,6 +8,7 @@ import com.wjf.mymusic.base.BaseToolbarActivity;
 import com.wjf.mymusic.ui.myDemo.baidumap.BaiduMapActivity;
 import com.wjf.mymusic.ui.myDemo.basepopup.BasePopupActivity;
 import com.wjf.mymusic.ui.myDemo.eventbusActivity.EventBusFirstActivity;
+import com.wjf.mymusic.ui.myDemo.parcelable.ParcelableActivity;
 import com.wjf.mymusic.ui.myDemo.recyclerViewActivity.RecyclerViewActivity;
 
 import butterknife.BindView;
@@ -24,6 +25,8 @@ public class MyDemosActivity extends BaseToolbarActivity {
     TextView mTv3;
     @BindView(R.id.tv4)
     TextView mTv4;
+    @BindView(R.id.tv5)
+    TextView mTv5;
     @BindView(R.id.tv2)
     TextView mTv2;
 
@@ -39,10 +42,12 @@ public class MyDemosActivity extends BaseToolbarActivity {
         mTv3.setVisibility(View.VISIBLE);
         mTv4.setText(R.string.BasePopup);
         mTv4.setVisibility(View.VISIBLE);
+        mTv5.setText(R.string.Parcelable);
+        mTv5.setVisibility(View.VISIBLE);
         mTv2.setText(R.string.EventBus);
     }
 
-    @OnClick({R.id.tv1, R.id.tv3, R.id.tv4, R.id.tv2})
+    @OnClick({R.id.tv1, R.id.tv3, R.id.tv4,  R.id.tv5, R.id.tv2})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv1:
@@ -53,6 +58,9 @@ public class MyDemosActivity extends BaseToolbarActivity {
                 break;
             case R.id.tv4:
                 startActivity(BasePopupActivity.class);
+                break;
+            case R.id.tv5:
+                startActivity(ParcelableActivity.class);
                 break;
             case R.id.tv2:
                 startActivity(EventBusFirstActivity.class);
