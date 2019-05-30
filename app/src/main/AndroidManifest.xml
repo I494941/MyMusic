@@ -154,5 +154,9 @@
         <activity
             android:name=".ui.myDemo.parcelable.ParcelableActivity2"
             android:label="@string/Parcelable" />
+
+        <activity
+            android:name=".ui.myDemo.threadPool.ThreadPoolActivity"
+            android:label="@string/ThreadPool" />
     </application>
 </manifest>

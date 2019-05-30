@@ -55,6 +55,8 @@
 
     <string name="Parcelable">Parcelable</string>
 
+    <string name="ThreadPool">ThreadPool</string>
+
     <string name="WorkManager">WorkManager</string>
 
     <string name="bottom">底部</string>
