@@ -7,6 +7,7 @@ import com.wjf.mymusic.R;
 import com.wjf.mymusic.base.BaseToolbarActivity;
 import com.wjf.mymusic.ui.myDemo.baidumap.BaiduMapActivity;
 import com.wjf.mymusic.ui.myDemo.basepopup.BasePopupActivity;
+import com.wjf.mymusic.ui.myDemo.coordinatorLayout.CoordinatorLayoutActvity;
 import com.wjf.mymusic.ui.myDemo.eventbusActivity.EventBusFirstActivity;
 import com.wjf.mymusic.ui.myDemo.parcelable.ParcelableActivity;
 import com.wjf.mymusic.ui.myDemo.recyclerViewActivity.RecyclerViewActivity;
@@ -30,6 +31,8 @@ public class MyDemosActivity extends BaseToolbarActivity {
     TextView mTv5;
     @BindView(R.id.tv6)
     TextView mTv6;
+    @BindView(R.id.tv7)
+    TextView mTv7;
     @BindView(R.id.tv2)
     TextView mTv2;
 
@@ -49,10 +52,12 @@ public class MyDemosActivity extends BaseToolbarActivity {
         mTv5.setVisibility(View.VISIBLE);
         mTv6.setText(R.string.ThreadPool);
         mTv6.setVisibility(View.VISIBLE);
+        mTv7.setText("CoordinatorLayout");
+        mTv7.setVisibility(View.VISIBLE);
         mTv2.setText(R.string.EventBus);
     }
 
-    @OnClick({R.id.tv1, R.id.tv3, R.id.tv4,  R.id.tv5,  R.id.tv6, R.id.tv2})
+    @OnClick({R.id.tv1, R.id.tv3, R.id.tv4,  R.id.tv5,  R.id.tv6,  R.id.tv7, R.id.tv2})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv1:
@@ -69,6 +74,9 @@ public class MyDemosActivity extends BaseToolbarActivity {
                 break;
             case R.id.tv6:
                 startActivity(ThreadPoolActivity.class);
+                break;
+            case R.id.tv7:
+                startActivity(CoordinatorLayoutActvity.class);
                 break;
             case R.id.tv2:
                 startActivity(EventBusFirstActivity.class);

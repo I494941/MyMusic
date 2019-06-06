@@ -158,5 +158,9 @@
         <activity
             android:name=".ui.myDemo.threadPool.ThreadPoolActivity"
             android:label="@string/ThreadPool" />
+
+        <activity
+            android:name=".ui.myDemo.coordinatorLayout.CoordinatorLayoutActvity"
+            android:label="CoordinatorLayout" />
     </application>
 </manifest>
