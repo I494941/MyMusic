@@ -6,6 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.wjf.mymusic.base.BaseAppCompatActivity;
@@ -15,13 +22,8 @@ import com.wjf.mymusic.ui.themeActivity.ThemeActivity;
 import com.wjf.mymusic.util.LogUtil;
 import com.wjf.mymusic.util.ScreenUtil;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by wjf on 2019/1/14.
@@ -134,5 +136,13 @@ public class MainActivity extends BaseAppCompatActivity {
             mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle(R.string.day_mode);
         else
             mNavView.getMenu().findItem(R.id.nav_night_mode).setTitle(R.string.night_mode);
+    }
+
+    @OnClick({R.id.tv})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv:
+                break;
+        }
     }
 }
